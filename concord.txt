@@ -1,0 +1,1275 @@
+ [IUCr Home Page]    [CIF Home Page]   [pdb2cif]
+
+  ------------------------------------------------------------------------
+                                    [ ]
+
+               Concordance of PDB Record Types to mmCIF 1.0.00
+
+                           version of 30 May 2000
+            originally released 27 Jan 1997 against mmCIF 0.8.10
+                with minor corrections to URL's 25 Feb 1997
+              and further corrections to comments 14 June 1998
+                                     by
+
+                            Herbert J. Bernstein
+          Bernstein+Sons, 5 Brewster Lane, Bellport, NY 11713-2803
+                    email: yaya@bernstein-plus-sons.com
+  ------------------------------------------------------------------------
+
+This document is work in progress. It is part of a collaborative effort
+among P. Bourne of the San Diego Super Computer Center, F. C. Bernstein and
+H. J. Bernstein of Bernstein + Sons. This concordance is part of the
+documentation of pdb2cif.m4, version 2.3.8 30 May 2000.
+
+We present a partial concordance of PDB record types to mmCIF tokens,
+organized in the normal PDB format record ordering. Understanding of both
+mmCIF and the PDB format is assumed.
+
+Derived from
+
+1. Bourne, P., Bernstein, F.C., Bernstein, H.J., "pdb2cif - program to
+filter a PDB file and produce a CIF file," Version 2.3.3, 27 January 1997,
+available from http://www.sdsc.edu/pb/pdb2cif/pdb2cif_2.3.3 or
+http://ndbserver.rutgers.edu/NDB/mmcif/software/pdb2cif
+
+2. "Protein Data Bank Atomic Coordinate Entry Format Description: An
+Annotated Reference Manual," Version 2.21, December 21, 1995, provided by N.
+Manning, Protein Data Bank, then at Brookhaven National Laboratory..
+
+3. untitled tabular form of PDB record formats provided by E. Abola, Dec.
+1995.
+
+4. Fitzgerald, P., Berman, H., Bourne, P., McMahon, B., Watenpaugh, K.,
+Westbrook, J., "Macromolecular CIF Dictionary," Version 0.8.10 of 23 January
+1997, available from http://ndbserver.rutgers.edu
+
+5. An earlier drafts of this table by F. C. Bernstein, and H. J. Bernstein
+and extensive discussions with F. C. Bernstein.
+
+6. Bernstein, F.C., Koetzle, T.F., Williams, G. J. B. , Meyer, E. F. Jr.,
+Brice, M.D.,Rodgers, J. R.,Kennard, O.,Shimanouchi, T., and Tasumi, M., "The
+Protein Data Bank: A Computer-based Archival File for Macromolecular
+Structures", J. Mol. Biol., 112, 535-542 (1977)
+
+7. "Protein Data Bank Contents Guide: Atomic Coordinate Entry Format
+Description," Version 2.0, February 21, 1996, available from Protein Data
+Bank.
+
+WARNING
+
+Both the PDB format and the mmCIF format are changing, and this document is
+incomplete and may contain serious errors. Not all the mappings shown here
+are included in pdb2cif. Use with caution.
+
+The following tokens are proposed by the author, and are not part of mmCIF
+1.0.00 (see pdb2cif_cif_mm_0.0.05.dic):
+
+_atom_site.pdb2cif_auth_id_in_model
+_atom_site.pdb2cif_auth_model_id
+_atom_site.pdb2cif_id_in_model
+_atom_site.pdb2cif_label_model_id
+_atom_site_anisotrop.pdb2cif_id_in_model
+_atom_site_anisotrop.pdb2cif_label_model_id
+     The model_id tokens specify the particular model. The id_in_model
+     tokens specify the atomic site within a model.
+
+_geom_angle.pdb2cif_auth_id_in_model_1
+_geom_angle.pdb2cif_auth_id_in_model_2
+_geom_angle.pdb2cif_auth_id_in_model_3
+_geom_angle.pdb2cif_auth_model_id
+_geom_angle.pdb2cif_id_in_model_1
+_geom_angle.pdb2cif_id_in_model_2
+_geom_angle.pdb2cif_id_in_model_3
+_geom_angle.pdb2cif_label_model_id
+_geom_bond.pdb2cif_auth_id_in_model_1
+_geom_bond.pdb2cif_auth_id_in_model_2
+_geom_bond.pdb2cif_auth_model_id
+_geom_bond.pdb2cif_id_in_model_1
+_geom_bond.pdb2cif_id_in_model_2
+_geom_bond.pdb2cif_label_model_id
+_geom_contact.pdb2cif_auth_id_in_model_1
+_geom_contact.pdb2cif_auth_id_in_model_2
+_geom_contact.pdb2cif_auth_model_id
+_geom_contact.pdb2cif_id_in_model_1
+_geom_contact.pdb2cif_id_in_model_2
+_geom_contact.pdb2cif_label_model_id
+_geom_hbond.pdb2cif_auth_id_in_model_A
+_geom_hbond.pdb2cif_auth_id_in_model_D
+_geom_hbond.pdb2cif_auth_id_in_model_H
+_geom_hbond.pdb2cif_auth_model_id
+_geom_hbond.pdb2cif_id_in_model_A
+_geom_hbond.pdb2cif_id_in_model_D
+_geom_hbond.pdb2cif_id_in_model_H
+_geom_hbond.pdb2cif_label_model_id
+_geom_torsion.pdb2cif_auth_id_in_model_1
+_geom_torsion.pdb2cif_auth_id_in_model_2
+_geom_torsion.pdb2cif_auth_id_in_model_3
+_geom_torsion.pdb2cif_auth_id_in_model_4
+_geom_torsion.pdb2cif_auth_model_id
+_geom_torsion.pdb2cif_id_in_model_1
+_geom_torsion.pdb2cif_id_in_model_2
+_geom_torsion.pdb2cif_id_in_model_3
+_geom_torsion.pdb2cif_id_in_model_4
+_geom_torsion.pdb2cif_label_model_id
+     The _geom_... model-related tokens are pointers to the equivalent
+     _atom_site tokens to allow for the specification of model-specific
+     geometry
+
+_struct_conn.pdb2cif_ptnr1_atom_site_id
+_struct_conn.pdb2cif_ptnr2_atom_site_id
+     These pointers to _atom_site.id allow the specific atom records
+     involved in bonds to be specified for convenience of graphics programs
+
+_struct_conn.pdb2cif_auth_model_id
+_struct_conn.pdb2cif_ptnr1_auth_id_in_model
+_struct_conn.pdb2cif_ptnr2_auth_id_in_model
+_struct_conn.pdb2cif_label_model_id
+_struct_conn.pdb2cif_ptnr1_id_in_model
+_struct_conn.pdb2cif_ptnr2_id_in_model
+     The _struct_conn... model-related token are pointers to the equivalent
+     _atom-site tokens to allow for the specification of model-specific
+     bonds
+
+_struct_mon_prot.pdb2cif_label_model_id
+_struct_mon_prot_cis.pdb2cif_label_model_id
+     to carry model-specificinformation in CISPEP translation
+
+_struct_ref_seq_dif.pdb2cif_db_seq_num
+     to allow for a more complete mapping of sequence alignments
+
+Note: To conform with COMCIFS procedures, all the pdb2cif-specific tokens
+now include a "pdb2cif_" prefix. If the tokens are adopted in the mmCIF
+dictionary, the prefix will be dropped.
+
+Note: The mapping of MODRES was been changed from versions prior to 2.3.6 of
+the concordance ffor version 2.3.6. We now treat MODRES as a variant on
+SEQADV with no database specified. The HETNAM and HETSYN are now mapped to
+common, rather than systematic names.
+
+
+PDB Field          Content  Type of Transformation
+                             and Related mmCIF field
+HEADER[1-6]        HEADER   NA
+HEADER[11-50]      classif. related to
+                             _struct_biol.details
+HEADER[51-59]      depDate  complex transformation
+                             _database_PDB_rev.date_original
+                             and _audit.creation_date
+HEADER[63-66]      idCode   related to
+                             _database_2.database_code
+                             and _struct_biol.id
+                             and _audit.revision_id
+
+OBSLTE[1-6]        OBSLTE   complex transformation
+                             _database_PDB_rev.status
+OBSLTE[9-10]       contin.  NA
+OBSLTE[12-20]      repDate  complex transformation
+                             used to find _database_PDB_rev.num
+OBSLTE[22-25]      idCode   NA
+OBSLTE[32-35]      rIdCode  equivalent to
+                             _database_PDB_rev.replaced_by
+OBSLTE[37-40]      rIdCode  equivalent to
+                             _database_PDB_rev.replaced_by
+OBSLTE[42-45]      rIdCode  equivalent to
+                             _database_PDB_rev.replaced_by
+OBSLTE[47-50]      rIdCode  equivalent to
+                             _database_PDB_rev.replaced_by
+OBSLTE[52-55]      rIdCode  equivalent to
+                             _database_PDB_rev.replaced_by
+OBSLTE[57-60]      rIdCode  equivalent to
+                             _database_PDB_rev.replaced_by
+OBSLTE[62-65]      rIdCode  equivalent to
+                             _database_PDB_rev.replaced_by
+OBSLTE[67-70]      rIdCode  equivalent to
+                             _database_PDB_rev.replaced_by
+
+TITLE[1-6]         TITLE    NA
+TITLE[9-10]        contin.  NA
+TITLE[11-70]       title    complex transformation
+                             _struct.title
+
+CAVEAT[1-6]        CAVEAT   NA
+CAVEAT[9-10]       contin.  NA
+CAVEAT[12-15]      idCode
+CAVEAT[20-70]      comment  append to _struct.title or
+                            equivalent to
+                             _database_PDB_caveat.text
+
+COMPND[1-6]        COMPND
+COMPND[9-10]       contin.
+COMPND[11-70]      compound append to _struct.title or
+                            for February 1996 PDB format
+                            complex transformation to various
+                            STRUCT... and ENTITY... data items
+
+SOURCE[1-6]        SOURCE   NA
+SOURCE[9-10]       contin.  NA
+SOURCE[11-70]      srcName  append to _struct.title or
+                            for February 1996 PDB format
+                            complex transformation to various
+                            ENTITY_SRC data items
+
+KEYWDS[1-6]        KEYWDS   NA
+KEYWDS[9-10]       contin.  NA
+KEYWDS[11-70]      keywds   equivalent to
+                             _struct_keywords.text
+
+EXPDTA[1-6]        EXPDTA   NA
+EXPDTA[9-10]       contin.  NA
+EXPDTA[11-70]      technique
+                            complex transformation
+                             _exptl.method
+
+AUTHOR[1-6]        AUTHOR   NA
+AUTHOR[9-10]       contin.  NA
+AUTHOR[11-70]      authorList
+                            complex transformation
+                             _audit_author.name
+REVDAT[1-6]        REVDAT   NA
+REVDAT[8-10]       modNum   equivalent to
+                             _database_PDB_rev.num
+                             and _database_PDB_rev_record.rev_num
+REVDAT[11-12]      contin.  NA
+REVDAT[14-22]      modDate  approximately equivalent to
+                             _database_PDB_rev.date
+                             and date in _audit.update_record
+REVDAT[24-28]      modId    complex transformation
+                             _database_PDB_rev_record.details
+                             and PDB revision name in
+                              _audit.update_record
+REVDAT[32]         modType  equivalent to
+                             _database_PDB_rev.mod_type
+REVDAT[40-45]      record   equivalent to
+                             _database_PDB_rev_record.type
+REVDAT[47-52]      record   equivalent to
+                             _database_PDB_rev_record.type
+REVDAT[54-59]      record   equivalent to
+                             _database_PDB_rev_record.type
+REVDAT[61-66]      record   equivalent to
+                             _database_PDB_rev_record.type
+
+SPRSDE[1-6]        SPRSDE   NA
+SPRSDE[9-10]       contin.  NA
+SPRSDE[12-20]      sprsdeDate
+                            complex transformation
+                             used to find _database_PDB_rev.num
+SPRSDE[22-25]      idCode   NA
+SPRSDE[32-35]      sIdCode  equivalent to
+                             _database_PDB_rev.replaces
+SPRSDE[37-40]      sIdCode  equivalent to
+                             _database_PDB_rev.replaces
+SPRSDE[42-45]      sIdCode  equivalent to
+                             _database_PDB_rev.replaces
+SPRSDE[47-50]      sIdCode  equivalent to
+                             _database_PDB_rev.replaces
+SPRSDE[52-55]      sIdCode  equivalent to
+                             _database_PDB_rev.replaces
+SPRSDE[57-60]      sIdCode  equivalent to
+                             _database_PDB_rev.replaces
+SPRSDE[62-65]      sIdCode  equivalent to
+                             _database_PDB_rev.replaces
+SPRSDE[67-70]      sIdCode  equivalent to
+                             _database_PDB_rev.replaces
+
+JRNL[1-6]          JRNL     NA
+JRNL[11-70]        details  See Below
+
+JRNL(AUTH)[1-6]    JRNL     NA
+JRNL(AUTH)[13-16]  AUTH     NA
+JRNL(AUTH)[17-18]  contin.  NA
+JRNL(AUTH)[20-70]  authorList
+                            complex transformation
+                             _citation_author.name
+
+JRNL(TITL)[1-6]    JRNL     NA
+JRNL(TITL)[13-16]  TITL     NA
+JRNL(TITL)[17-18]  contin.  NA
+JRNL(TITL)[20-70]  authorList
+                            complex transformation
+                             _citation.title
+
+JRNL(EDIT)[1-6]    JRNL     NA
+JRNL(EDIT)[13-16]  EDIT     NA
+JRNL(EDIT)[17-18]  contin.  NA
+JRNL(EDIT)[20-70]  authorList
+                            complex transformation
+                             _citation_editor.name
+
+JRNL(REF)[1-6]     JRNL     NA
+JRNL(REF)[13-16]   REF      NA
+JRNL(REF)[20-34]   TO BE PUBLISHED
+
+JRNL(REF)[1-6]     JRNL     NA
+JRNL(REF)[13-16]   REF      NA
+JRNL(REF)[17-18]   contin.  NA
+JRNL(REF)[20-47]   pubName  related to
+                             _citation.journal_abbrev
+JRNL(REF)[50-51]   V.       NA
+JRNL(REF)[52-55]   volume   related to
+                             _citation.journal_volume
+JRNL(REF)[57-61]   page     related to
+                             _citation.page_first
+JRNL(REF)[63-66]   year     related to
+                             _citation.year
+
+JRNL(REF)[1-6]     JRNL     NA
+JRNL(PUBL)[13-16]  PUBL     NA
+JRNL(PUBL)[17-18]  contin.  NA
+JRNL(PUBL)[20-70]  pub      approximately equivalent to
+                             _citation.book_publisher
+
+JRNL(REFN)[1-6]    JRNL     NA
+JRNL(REFN)[13-16]  REFN     NA
+JRNL(REFN)[20-23]  ASTM     NA
+JRNL(REFN)[25-30]  astm     related to
+                             _citation.journal_id_ASTM
+JRNL(REFN)[33-34]  country  related to
+                             _citation.country
+JRNL(REFN)[36-39]  ISBN or
+JRNL(REFN)[41-65]  isbn     approximately equivalent to
+                             _citation.journal_id_ISSN
+                             or _citation.book_id_ISBN
+JRNL(REFN)[68-70]  coden    equivalent to
+                             _citation.journal_id_CSD
+
+JRNL(REFN)[1-6]    JRNL     NA
+JRNL(REFN)[13-16]  REFN     NA
+JRNL(REFN)[67-70]  353
+
+REMARK[1-6]        REMARK   NA
+REMARK[8-10]       remarkNum
+                            equivalent to
+                             _database_PDB_remark.id
+REMARK[12-70]      text
+                             _database_PDB_remark.text
+
+REMARK#1[1-6]      REMARK   NA
+REMARK#1[10]       1
+REMARK#1[12-20]    REFERENCE
+REMARK#1[22-70]    refNum
+
+REMARK#1[1-6]      REMARK   NA
+REMARK#1[10]       1        NA
+REMARK#1[13-16]    AUTH     NA
+REMARK#1[17-18]    contin.  NA
+REMARK#1[20-70]    authorList
+                            complex transformation
+                             _citation_author.name
+
+REMARK#1[1-6]      REMARK   NA
+REMARK#1[10]       1        NA
+REMARK#1[13-16]    TITL     NA
+REMARK#1[17-18]    contin.  NA
+REMARK#1[20-70]    title    complex transformation
+                             _citation.title
+
+REMARK#1[1-6]      REMARK   NA
+REMARK#1[10]       1        NA
+REMARK#1[13-16]    EDIT     NA
+REMARK#1[17-18]    contin.  NA
+REMARK#1[20-70]    editorList
+                            complex transformation
+                             _citation_editor.name
+
+REMARK#1[1-6]      REMARK   NA
+REMARK#1[10]       1        NA
+REMARK#1[13-16]    REF      NA
+REMARK#1[17-18]    contin.  NA
+REMARK#1[20-47]    pubName  related to
+                             _citation.journal_abbrev
+REMARK#1[50-51]    V.       NA
+REMARK#1[52-55]    volume   related to
+                             _citation.journal_volume
+REMARK#1[57-61]    page     related to
+                             _citation.page_first
+REMARK#1[63-66]    year     related to
+                             _citation.year
+
+REMARK#1[1-6]      REMARK   NA
+REMARK#1[10]       1        NA
+REMARK#1[13-16]    PUBL     NA
+REMARK#1[17-18]    contin.  NA
+REMARK#1[20-70]    pub      approximately equivalent to
+                             _citation.book_publisher
+
+REMARK#1[1-6]      REMARK   NA
+REMARK#1[10]       1        NA
+REMARK#1[13-16]    REFN     NA
+REMARK#1[20-23]    ASTM     NA
+REMARK#1[25-30]    astm     related to
+                             _citation.journal_id_ASTM
+REMARK#1[33-34]    country  related to
+                             _citation.country
+REMARK#1[36-39]    ISBN or ISSN
+                             NA
+REMARK#1[41-65]    isbn     approximately equivalent to
+                             _citation.journal_id_ISSN
+                             or _citation.book_id_ISBN
+REMARK#1[68-70]    coden
+
+REMARK#1[1-6]      REMARK   NA
+REMARK#1[10]       1        NA
+REMARK#1[13-16]    REFN     NA
+REMARK#1[67-70]    353
+
+REMARK#2[1-6]      REMARK   NA
+REMARK#2[10]       2        NA
+REMARK#2[12-23]    RESOLUTION.
+                            NA
+REMARK#2[24-27]    resolution
+                              _reflns.d_resolution_high
+
+REMARK#2[1-6]      REMARK   NA
+REMARK#2[10]       2        NA
+REMARK#2[12-39]    RESOLUTION.
+                            NA
+REMARK#2[39-70]    comment
+
+REMARK#2[1-6]      REMARK   NA
+REMARK#2[10]       2        NA
+REMARK#2[12-23]    RESOLUTION.
+                            NA
+REMARK#2[24-70]    comment
+
+REMARK#3[1-6]      REMARK   NA
+REMARK#3[10]       3        NA
+REMARK#3[12-22]    REFINEMENT.
+                            NA
+
+REMARK#3[1-6]      REMARK   NA
+REMARK#3[10]       3        NA
+REMARK#3[12-70]    text
+                             _refine.details
+
+REMARK#3[1-6]      REMARK   NA
+REMARK#3[10]       3        NA
+REMARK#3[14-20]    PROGRAM  NA
+REMARK#3[23]       num      complex transformation
+                             _computing.structure_refinement
+REMARK#3[41-70]    progName complex transformation
+                             _computing.structure_refinement
+
+REMARK#3[1-6]      REMARK   NA
+REMARK#3[10]       3        NA
+REMARK#3[14-20]    AUTHORS  NA
+REMARK#3[23]       num      complex transformation
+                             _computing.structure_refinement
+REMARK#3[41-70]    auths    complex transformation
+                             _computing.structure_refinement
+
+REMARK#3[1-6]      REMARK   NA
+REMARK#3[10]       3        NA
+REMARK#3[14-40]    keywd
+REMARK#3[41-47]    value
+REMARK#3[48-70]    units
+
+REMARK#3[1-6]      REMARK   NA
+REMARK#3[10]       3        NA
+REMARK#3[14-41]    keywd
+REMARK#3[48-54]    value
+REMARK#3[55-70]    units
+
+REMARK#3[1-6]      REMARK   NA
+REMARK#3[10]       3        NA
+REMARK#3[14-41]    keywd
+REMARK#3[58-63]    value
+
+REMARK#3[1-6]      REMARK   NA
+REMARK#3[10]       3        NA
+REMARK#3[14-34]    NUMBER OF REFLECTIONS
+                            NA
+REMARK#3[41-48]    value
+                             _refine.ls_number_reflns_obs
+
+REMARK#3[1-6]      REMARK   NA
+REMARK#3[10]       3        NA
+REMARK#3[14-41]    NUMBER OF UNIQUE
+                            NA
+REMARK#3[48-55]    value
+REMARK#3[1-6]      REMARK   NA
+REMARK#3[10]       3        NA
+REMARK#3[14-29]    RESOLUTION RANGE
+                            NA
+REMARK#3[36-39]    low
+                             _refine.ls_d_res_low
+REMARK#3[41]       '-'      NA
+REMARK#3[43-46]    high
+                             _refine.ls_d_res_high
+
+REMARK#3[1-6]      REMARK   NA
+REMARK#3[10]       3        NA
+REMARK#3[14-29]    RESOLUTION RANGE
+                            NA
+REMARK#3[41-44]    low
+                             _refine.ls_d_res_low
+REMARK#3[46]       '-'      NA
+REMARK#3[48-51]    high
+                             _refine.ls_d_res_high
+
+REMARK#3[1-6]      REMARK   NA
+REMARK#3[10]       3        NA
+REMARK#3[17-56]    keywd
+REMARK#3[58-62]    value
+REMARK#3[63]       (
+REMARK#3[64-68]    sigma
+                             Note:  in general, use token suffix
+                             "_esd" in mmCIF
+REMARK#3[1-6]      REMARK
+REMARK#3[10]       3
+REMARK#3[15-56]    keywd
+REMARK#3[58-62]    value
+REMARK#3[63]       (
+REMARK#3[64-68]    sigma
+                             Note:  in general, use token suffix
+                             "_esd" in mmCIF
+
+MODRES[1-6]        MODRES   NA
+MODRES[8-11]       idCode   NA
+MODRES[13-15]      resName  equivalent to
+                             _struct_ref_seq_dif.mon_id
+MODRES[17]         chainID  equivalent to
+                             _struct_ref_seq_dif.mon_id
+MODRES[19-22]      seqNum   complex transformation
+                             _struct_ref_seq_dif.seq_num
+MODRES[23]         insertCode
+                            complex transformation
+                             _struct_ref_seq_dif.seq_num
+MODRES[25-27]      stdRes    equivalent to
+                             _struct_ref_seq_dif.db_mon_id
+MODRES[30-70]      comment  related to
+                             _struct_ref_seq_dif.details
+
+DBREF[1-5]         DBREF    NA
+DBREF[8-11]        idCode   NA
+DBREF[13]          chainID  complex transformation
+                             _struct_ref.entity_id or
+                             _struct_ref.biol_id
+DBREF[15-18]       seqBegin complex transformation
+                             _struct_ref_seq.seq_align_beg
+DBREF[19]          insertBegin
+                            complex transformation
+                             _struct_ref_seq.seq_align_beg
+DBREF[21-24]       seqEnd   complex transformation
+                             _struct_ref_seq.seq_align_end
+DBREF[25]          insertEnd
+                            complex transformation
+                             _struct_ref_seq.seq_align_end
+DBREF[27-32]       database
+                             _struct_ref.db_name
+DBREF[34-41]       dbAccession
+                             _struct_ref.db_code
+DBREF[43-54]       dbIdCode
+                            add to
+                             _struct_ref.db_code
+DBREF[56-60]       seqBegin
+                             _struct_ref_seq.db_align_beg
+DBREF[61]          insBegpdb
+                            if present complex transformation
+                             _struct_ref_seq.db_align_beg
+
+DBREF[63-67]       seqEnd
+                             _struct_ref_seq.db_align_end
+DBREF[68]          insEndpdb
+                            if present complex transformation
+                             _struct_ref_seq.db_align_end
+
+SEQADV[1-6]        SEQADV   NA
+SEQADV[8-11]       idCode   NA
+SEQADV[13-15]      resName  equivalent to
+                             _struct_ref_seq_dif.mon_id
+SEQADV[17]         chainID  complex transformation
+                             _struct_ref.entity_id
+SEQADV[19-22]      seqNum   complex transformation
+                             _struct_ref_seq_dif.seq_num
+SEQADV[23]         insertCode
+                            complex transformation
+                             _struct_ref_seq_dif.seq_num
+SEQADV[25-28]      database complex transformation
+                             _struct_ref.db_name
+SEQADV[30-38]      dbIdCode complex transformation
+                             _struct_ref.db_code
+SEQADV[40-42]      dbRes    equivalent to
+                             _struct_ref_seq_dif.db_mon_id
+SEQADV[44-49]      dbSeq    equivalent to ***proposed***
+                             _struct_ref_seq_dif.pdb2cif_db_seq_num
+SEQADV[50-70]      conflict related to
+                             _struct_ref_seq_dif.details
+
+SEQRES[1-6]        SEQRES   NA
+SEQRES[9-10]       serialNum
+                            NA
+SEQRES[12]         chainID  complex transformation
+                             _struct_asym.id
+                             used to obtain
+                             _entity_poly_seq.entity_id
+SEQRES[14-17]      numRes
+SEQRES[20-22]      resName  equivalent to
+                             _entity_poly_seq.mon_id
+SEQRES[24-26]      resName  equivalent to
+                             _entity_poly_seq.mon_id
+SEQRES[28-30]      resName  equivalent to
+                             _entity_poly_seq.mon_id
+SEQRES[32-34]      resName  equivalent to
+                             _entity_poly_seq.mon_id
+SEQRES[36-38]      resName  equivalent to
+                             _entity_poly_seq.mon_id
+SEQRES[40-42]      resName  equivalent to
+                             _entity_poly_seq.mon_id
+SEQRES[44-46]      resName  equivalent to
+                             _entity_poly_seq.mon_id
+SEQRES[48-50]      resName  equivalent to
+                             _entity_poly_seq.mon_id
+SEQRES[52-54]      resName  equivalent to
+                             _entity_poly_seq.mon_id
+SEQRES[56-58]      resName  equivalent to
+                             _entity_poly_seq.mon_id
+SEQRES[60-62]      resName  equivalent to
+                             _entity_poly_seq.mon_id
+SEQRES[64-66]      resName  equivalent to
+                             _entity_poly_seq.mon_id
+SEQRES[68-70]      resName  equivalent to
+                             _entity_poly_seq.mon_id
+
+FTNOTE[1-6]        FTNOTE   NA
+FTNOTE[8-10]       ftNoteNum (only in entries prior to 3/96)
+                            equivalent to
+                             _atom_sites_footnote.id
+FTNOTE[12-70]      footNote equivalent to
+                             _atom_sites_footnote.text
+
+HET[1-6]           HET
+HET[8-10]          hetID    equivalent to
+                             _chem_comp.id
+HET[13]            ChainID
+HET[14-17]         seqNum
+HET[18]            insertCode
+HET[21-25]         numAtoms
+                            complex transformation
+                             _chem_comp.number_atoms_all or
+                             _chem_comp.number_atoms_nh
+HET[31-70]         Text     equivalent to
+                             _chem_comp.model_details
+
+HETNAM[1-6]        HETNAM
+HETNAM[9-10]       contin.
+HETNAM[12-14]      hetID    equivalent to
+                             _chem_comp.id
+HETNAM[16-70]      name     equivalent to
+                             _chem_comp.name
+                             _entity_name_com.name
+
+HETSYN[1-6]        HETSYN
+HETSYN[9-10]       contin.
+HETSYN[12-14]      hetID    equivalent to
+                             _chem_comp.id
+HETSYN[16-70]      name     equivalent to
+                             _chem_comp.name
+                             _entity_name_com.name
+
+FORMUL[1-6]        FORMUL   NA
+FORMUL[9-10]       Component number
+FORMUL[13-15]      hetID    related to
+                             _chem_comp.id
+FORMUL[18]         contin.
+FORMUL[19]         `*' for water
+FORMUL[20-70]      Chemical Formula
+                            approximately equivalent to
+                             _chem_comp.formula
+
+HELIX[1-6]         HELIX    NA
+HELIX[8-10]        serNum
+HELIX[12-14]       HelixID  approximately equivalent to
+                             _struct_conf.id
+HELIX[16-18]       initResName
+                            related to
+                             _struct_conf.beg_label_comp_id
+HELIX[20]          initChainID
+                            approximately equivalent to
+                             _struct_conf.beg_label_asym_id
+HELIX[22-25]       initSeqNum
+                            complex transformation
+                             _struct_conf.beg_auth_seq_id
+HELIX[26]          initICode
+                            complex transformation
+                             _struct_conf.beg_auth_seq_id
+HELIX[28-30]       endResName
+                            related to
+                             _struct_conf.end_label_comp_id
+HELIX[32]          endChainID
+                            approximately equivalent to
+                             _struct_conf.end_label_asym_id
+HELIX[34-37]       endSeqNum
+                            complex transformation
+                             _struct_conf.end_auth_seq_id
+HELIX[38]          endICode complex transformation
+                             _struct_conf.end_auth_seq_id
+HELIX[39-40]       class    complex transformation
+                             _struct_conf.conf_type_id
+HELIX[41-70]       comment  related to
+                             _struct_conf.details
+HELIX[72-76]       length
+
+SHEET[1-6]         SHEET    NA
+SHEET[8-10]        strand   complex transformation
+                             _struct_sheet_range.id
+SHEET[12-14]       sheetID  complex transformation
+                             _struct_sheet.id
+SHEET[15-16]       numStrands
+SHEET[18-20]       initResName
+                            complex transformation
+                             _struct_sheet_range.beg_label_comp_id
+SHEET[22]          initChainID
+                            complex transformation
+                             _struct_sheet_range.beg_label_asym_id
+SHEET[23-26]       initSeqNum
+                            complex transformation
+                             _struct_sheet_range.beg_auth_seq_id
+SHEET[27]          initICode
+                            complex transformation
+                             _struct_sheet_range.beg_auth_seq_id
+SHEET[29-31]       endResName
+                            complex transformation
+                             _struct_sheet_range.end_label_comp_id
+SHEET[33]          endChainID
+                            complex transformation
+                             _struct_sheet_range.end_label_asym_id
+SHEET[34-37]       endSeqNum
+                            complex transformation
+                             _struct_sheet_range.end_auth_seq_id
+SHEET[38]          endICode complex transformation
+                             _struct_sheet_range.end_auth_seq_id
+SHEET[39-40]       sense    complex transformation
+                             _struct_sheet_order.sense
+SHEET[42-45]       curAtom  complex transformation
+                             _struct_sheet_hbond.
+                               range_2_beg_label_atom_id
+SHEET[46-48]       curResName
+SHEET[50]          curChainId
+SHEET[51-54]       curResSeq
+                            complex transformation
+                             _struct_sheet_hbond.
+                               range_2_beg_auth_seq_id
+SHEET[55]          curICode complex transformation
+                             _struct_sheet_hbond.
+                               range_2_beg_auth_seq_id
+SHEET[57-60]       prevAtom complex transformation
+                             _struct_sheet_hbond.
+                               range_1_beg_label_atom_id
+SHEET[61-63]       prevResName
+SHEET[65]          prevChainId
+SHEET[66-69]       prevResSeq
+                            complex transformation
+                             _struct_sheet_hbond.
+                               range_1_beg_auth_seq_id
+SHEET[70]          prevICode
+                            complex transformation
+                             _struct_sheet_hbond.
+                               range_1_beg_auth_seq_id
+
+TURN[1-6]          TURN     NA
+TURN[8-10]         seq
+TURN[12-14]        turnId   approximately equivalent to
+                             _struct_conf.id
+TURN[16-18]        initResName
+                            related to
+                             _struct_conf.beg_label_comp_id
+TURN[20]           initChainId
+                            approximately equivalent to
+                             _struct_conf.beg_label_asym_id
+TURN[21-24]        initSeqNum
+                            complex transformation
+                             _struct_conf.beg_auth_seq_id
+TURN[25]           initICode
+                            complex transformation
+                             _struct_conf.beg_auth_seq_id
+TURN[27-29]        endResName
+                            related to
+                             _struct_conf.end_label_comp_id
+TURN[31]           endChainId
+                            approximately equivalent to
+                             _struct_conf.end_label_asym_id
+TURN[32-35]        endSeqNum
+                            complex transformation
+                             _struct_conf.end_auth_seq_id
+TURN[36]           endICode complex transformation
+                             _struct_conf.end_auth_seq_id
+TURN[41-70]        comment  related to
+                             _struct_conf.details
+
+SSBOND[1-6]        SSBOND   NA
+SSBOND[8-10]       seqNum
+SSBOND[12-14]      CYS      related to
+                             _struct_conn.ptnr1_label_comp_id
+SSBOND[16]         chainID1 approximately equivalent to
+                             _struct_conn.ptnr1_label_asym_id
+SSBOND[18-21]      seqNum1  complex transformation
+                             _struct_conn.ptnr1_auth_seq_id
+SSBOND[22]         icode1   complex transformation
+                             _struct_conn.ptnr1_auth_seq_id
+SSBOND[26-28]      CYS      related to
+                             _struct_conn.ptnr2_label_comp_id
+SSBOND[30]         chainID2 approximately equivalent to
+                             _struct_conn.ptnr2_label_asym_id
+SSBOND[32-35]      seqNum2  complex transformation
+                             _struct_conn.ptnr2_auth_seq_id
+SSBOND[36]         icode2   complex transformation
+                             _struct_conn.ptnr2_auth_seq_id
+SSBOND[41-70]      ssbond   February 1992 PDB format
+                            related to
+                             _struct_conn.details
+SSBOND[60-65]      symop    February 1996 PDB format
+                            related to
+                             _struct_conn.ptnr1_symmetry
+SSBOND[67-72]      symop    February 1996 PDB format
+                            related to
+                             _struct_conn.ptnr2_symmetry
+
+LINK[1-6]          LINK     NA
+LINK[8-11]         modelno  related to ***PROPOSED***
+                             _struct_conn.pdb1cif_ptnr1_label_model_id
+                            (NOTE:  not in February 1996 PDB Format)
+LINK[13-16]        name     related to
+                             _struct_conn.ptnr1_label_atom_id
+LINK[18-20]        resName  related to
+                             _struct_conn.ptnr1_label_comp_id
+LINK[22]           chainID  approximately equivalent to
+                             _struct_conn.ptnr1_label_asym_id
+LINK[23-26]        resSeq   complex transformation
+                             _struct_conn.ptnr1_auth_seq_id
+LINK[27]           iCODE    complex transformation
+                             _struct_conn.ptnr1_auth_seq_id
+LINK[38-41]        modelno  related to ***PROPOSED***
+                             _struct_conn.pdb2cif_ptnr2_label_model_id
+                            (NOTE:  not in February 1996 PDB Format)
+LINK[43-46]        name     related to
+                             _struct_conn.ptnr2_label_atom_id
+LINK[48-50]        resName  related to
+                             _struct_conn.ptnr2_label_comp_id
+LINK[52]           chainID  approximately equivalent to
+                             _struct_conn.ptnr2_label_asym_id
+LINK[53-56]        resSeq   complex transformation
+                             _struct_conn.ptnr2_auth_seq_id
+LINK[57]           iCode    complex transformation
+                             _struct_conn.ptnr2_auth_seq_id
+LINK[60-65]        Symop    related to
+                             _struct_conn.ptnr1_symmetry
+LINK[62-65]        Symop    related to
+                             _struct_conn.ptnr2_symmetry
+
+HYDBND[1-6]        HYDBND   NA
+HYDBND[13-16]      name     related to
+                             _struct_conn.ptnr1_label_atom_id
+HYDBND[17]         altLoc   related to
+                             _struct_conn.ptnr1_label_alt_id
+HYDBND[18-20]      resName  related to
+                             _struct_conn.ptnr1_label_comp_id
+HYDBND[22]         Chain    approximately equivalent to
+                             _struct_conn.ptnr1_label_asym_id
+HYDBND[23-27]      resSeq   complex transformation
+                             _struct_conn.ptnr1_auth_seq_id
+HYDBND[28]         ICode    complex transformation
+                             _struct_conn.ptnr1_auth_seq_id
+HYDBND[30-33]      name
+HYDBND[34]         altLoc
+HYDBND[36]         Chain
+HYDBND[37-41]      resSeq
+HYDBND[42]         iCode
+HYDBND[44-47]      name     related to
+                             _struct_conn.ptnr2_label_atom_id
+HYDBND[48]         altLoc   related to
+                             _struct_conn.ptnr2_label_alt_id
+HYDBND[49-51]      resName  related to
+                             _struct_conn.ptnr2_label_comp_id
+HYDBND[53]         chainID  approximately equivalent to
+                             _struct_conn.ptnr2_label_asym_id
+HYDBND[54-58]      resSeq   complex transformation
+                             _struct_conn.ptnr2_auth_seq_id
+HYDBND[59]         iCode    complex transformation
+                             _struct_conn.ptnr2_auth_seq_id
+HYDBND[60-65]      Symop    related to
+                             _struct_conn.ptnr1_symmetry
+HYDBND[62-65]      Symop    related to
+                             _struct_conn.ptnr2_symmetry
+
+SLTBRG[1-6]        SLTBRG   NA
+SLTBRG[13-16]      atom     related to
+                             _struct_conn.ptnr1_label_atom_id
+SLTBRG[17]         altLoc   related to
+                             _struct_conn.ptnr1_label_alt_id
+SLTBRG[18-20]      resName  related to
+                             _struct_conn.ptnr1_label_comp_id
+SLTBRG[22]         chainID  approximately equivalent to
+                             _struct_conn.ptnr1_label_asym_id
+SLTBRG[23-26]      resSeq   complex transformation
+                             _struct_conn.ptnr1_auth_seq_id
+SLTBRG[27]         iCode    complex transformation
+                             _struct_conn.ptnr1_auth_seq_id
+SLTBRG[43-46]      atom     related to
+                             _struct_conn.ptnr2_label_atom_id
+SLTBRG[47]         altLoc   related to
+                             _struct_conn.ptnr2_label_alt_id
+SLTBRG[48-50]      resName  related to
+                             _struct_conn.ptnr2_label_comp_id
+SLTBRG[52]         chainID  approximately equivalent to
+                             _struct_conn.ptnr2_label_asym_id
+SLTBRG[53-56]      resSeq   complex transformation
+                             _struct_conn.ptnr2_auth_seq_id
+SLTBRG[57]         iCode    complex transformation
+                             _struct_conn.ptnr2_auth_seq_id
+SLTBRG[60-65]      Symop    related to
+                             _struct_conn.ptnr1_symmetry
+SLTBRG[62-65]      Symop    related to
+                             _struct_conn.ptnr2_symmetry
+
+SITE[1-6]          SITE     NA
+SITE[8-10]         seqNum
+SITE[12-14]        siteID
+                             _struct_site_gen.site_id
+SITE[16-17]        numRes
+SITE[19-21]        resName1 equivalent to
+                             _struct_site_gen.label_comp_id
+SITE[23]           chainID1 approximately equivalent to
+                             _struct_site_gen.label_asym_id
+SITE[24-27]        seq1     complex transformation
+                             _struct_site_gen.auth_seq_id
+SITE[28]           iCode1   complex transformation
+                             _struct_site_gen.auth_seq_id
+SITE[30-32]        resName2 equivalent to
+                             _struct_site_gen.label_comp_id
+SITE[34]           chainID2 approximately equivalent to
+                             _struct_site_gen.label_asym_id
+SITE[35-38]        seq2     complex transformation
+                             _struct_site_gen.auth_seq_id
+SITE[39]           iCode2   complex transformation
+                             _struct_site_gen.auth_seq_id
+SITE[41-43]        resName3 equivalent to
+                             _struct_site_gen.label_comp_id
+SITE[45]           chainID3 approximately equivalent to
+                             _struct_site_gen.label_asym_id
+SITE[46-49]        seq3     complex transformation
+                             _struct_site_gen.auth_seq_id
+SITE[50]           iCode3   complex transformation
+                             _struct_site_gen.auth_seq_id
+SITE[52-54]        resName4 equivalent to
+                             _struct_site_gen.label_comp_id
+SITE[56]           chainID4 approximately equivalent to
+                             _struct_site_gen.label_asym_id
+SITE[57-60]        seq4     complex transformation
+                             _struct_site_gen.auth_seq_id
+SITE[61]           iCode4   complex transformation
+                             _struct_site_gen.auth_seq_id
+
+CRYST1[1-6]        CRYST1   NA
+CRYST1[7-15]       a        equivalent to
+                             _cell.length_a
+CRYST1[16-24]      b        equivalent to
+                             _cell.length_b
+CRYST1[25-33]      c        equivalent to
+                             _cell.length_c
+CRYST1[34-40]      alpha    equivalent to
+                             _cell.angle_alpha
+CRYST1[41-47]      beta     equivalent to
+                             _cell.angle_beta
+CRYST1[48-54]      gamma    equivalent to
+                             _cell.angle_gamma
+CRYST1[56-66]      sGroup   equivalent to
+                             _symmetry.space_group_name_H-M
+CRYST1[67-70]      z        equivalent to
+                             _cell.Z_PDB
+
+ORIGXn[1-6]        ORIGXn   NA
+ORIGXn[11-20]      o[n][1]  equivalent to
+                             _database_pdb_matrix.origx[n][1]
+ORIGXn[21-30]      o[n][2]  equivalent to
+                             _database_pdb_matrix.origx[n][2]
+ORIGXn[31-40]      o[n][3]  equivalent to
+                             _database_pdb_matrix.origx[n][2]
+ORIGXn[46-55]      t[n]     equivalent to
+                             _database_pdb_matrix.origx_vector[n]
+
+SCALE[1-6]         SCALE    NA
+SCALE[11-20]       s[n][1]  equivalent to
+                             _atom_sites.fract_transf_matrix[n][1]
+SCALE[21-30]       s[n][2]  equivalent to
+                             _atom_sites.fract_transf_matrix[n][2]
+SCALE[31-40]       s[n][3]  equivalent to
+                             _atom_sites.fract_transf_matrix[n][3]
+SCALE[46-55]       u[n]     equivalent to
+                             _atom_sites.fract_transf_vector[n]
+
+MTRIXn[1-6]        MTRIXn   NA
+MTRIXn[8-10]       serial   equivalent to
+                             _struct_ncs_oper.id
+MTRIXn[11-20]      m[n][1]  equivalent to
+                             _struct_ncs_oper.matrix[n][1]
+MTRIXn[21-30]      m[n][2]  equivalent to
+                             _struct_ncs_oper.matrix[n][2]
+MTRIXn[31-40]      m[n][3]  equivalent to
+                             _struct_ncs_oper.matrix[n][3]
+MTRIXn[46-55]      v[n]     equivalent to
+                             _struct_ncs_oper.vector[n]
+MTRIXn[60]         iGiven   related to
+                             _struct_ncs_oper.code
+
+
+TVECT[1-6]         TVECT    NA
+TVECT[8-10]        serial   equivalent to
+                             _database_pdb_tvect.id
+TVECT[11-20]       t[1]     equivalent to
+                             _database_pdb_tvect.vector[1]
+TVECT[21-30]       t[2]     equivalent to
+                             _database_pdb_tvect.vector[2]
+TVECT[31-40]       t[3]     equivalent to
+                             _database_pdb_tvect.vector[3]
+TVECT[41-70]       text     equivalent to
+                             _database_pdb_tvect.details
+
+MODEL[1-5]         MODEL    NA
+MODEL[11-14]       serial   equivalent to ***proposed***
+                             _atom_site.pdb2cif_label_model_id
+
+ATOM[1-6]          ATOM     equivalent to
+                             _atom_site.group_PDB
+ATOM[7-11]         serial   related to
+                             _atom_site.id (non-NMR entries)
+                             _atom_site.id (NMR before 2/99)
+                             _atom_site.pdb2cif_auth_id_in_model
+                                           (NMR since 2/99)
+ATOM[13-16]        name     related to
+                             _atom_site.label_atom_id
+ATOM[17]           altLoc   related to
+                             _atom_site.label_alt_id
+ATOM[18-20]        resName  related to
+                             _atom_site.label_comp_id
+ATOM[22]           chainID  approximately equivalent to
+                             _atom_site.label_asym_id
+ATOM[23-26]        resSeq   complex transformation
+                             _atom_site.auth_seq_id
+ATOM[27]           iCode    complex transformation
+                             _atom_site.auth_seq_id
+ATOM[31-38]        x        related to
+                             _atom_site.cartn_x
+ATOM[39-46]        y        related to
+                             _atom_site.cartn_y
+ATOM[47-54]        z        related to
+                             _atom_site.cartn_z
+ATOM[55-60]        occupancy
+                            related to
+                             _atom_site.occupancy
+ATOM[61-66]        tempFactor
+                            related to
+                             _atom_site.B_iso_or_equiv
+ATOM[68-70]        ftNote   (in entries prior to ref 7., only)
+                            related to
+                             _atom_site.footnote_id
+ATOM[73-76]        segID
+ATOM[77-78]        element  related to
+                             _atom_site.type_symbol
+ATOM[79-80]        charge   related to
+                             _atom_type.oxidation_number
+
+SIGATM[1-6]        SIGATM   NA
+SIGATM[7-11]       serial   related to
+                             _atom_site.id (non-NMR entries)
+                             _atom_site.id (NMR before 2/99)
+                             _atom_site.pdb2cif_auth_id_in_model
+                                           (NMR since 2/99)
+SIGATM[13-16]      name     related to
+                             _atom_site.label_atom_id
+SIGATM[17]         altLoc   related to
+                             _atom_site.label_alt_id
+SIGATM[18-20]      resName  related to
+                             _atom_site.label_comp_id
+SIGATM[22]         chainID  approximately equivalent to
+                             _atom_site.label_asym_id
+SIGATM[23-26]      resSeq   complex transformation
+                             _atom_site.auth_seq_id
+SIGATM[27]         iCode    complex transformation
+                             _atom_site.auth_seq_id
+SIGATM[31-38]      sigX     related to
+                             _atom_site.cartn_x_esd
+SIGATM[39-46]      sigY     related to
+                             _atom_site.cartn_y_esd
+SIGATM[47-54]      sigZ     related to
+                             _atom_site.cartn_z_esd
+SIGATM[55-60]      sigOcc   related to
+                             _atom_site.occupancy_esd
+SIGATM[61-66]      sigTemp  related to
+                             _atom_site.B_iso_or_equiv_esd
+SIGATM[68-70]      ftNote   related to
+                             _atom_site.footnote_id
+SIGATM[73-76]      segID
+SIGATM[77-78]      element  related to
+                             _atom_site.type_symbol
+SIGATM[79-80]      charge
+
+ANISOU[1-6]        ANISOU   NA
+ANISOU[7-11]       serial   related to
+                             _atom_site.id (non-NMR entries)
+                             _atom_site.id (NMR before 2/99)
+                             _atom_site.pdb2cif_auth_id_in_model
+                                           (NMR since 2/99)
+ANISOU[13-16]      name     related to
+                             _atom_site.label_atom_id
+ANISOU[17]         altLoc   related to
+                             _atom_site.label_alt_id
+ANISOU[18-20]      resName  related to
+                             _atom_site.label_comp_id
+ANISOU[22]         chainID  approximately equivalent to
+                             _atom_site.label_asym_id
+ANISOU[23-26]      resSeq   complex transformation
+                             _atom_site.auth_seq_id
+ANISOU[27]         iCode    complex transformation
+                             _atom_site.auth_seq_id
+ANISOU[29-35]      u[0][0]  complex transformation
+                             _atom_site.aniso_U[1][1]
+ANISOU[36-42]      u[1][1]  complex transformation
+                             _atom_site.aniso_U[2][2]
+ANISOU[43-49]      u[2][2]  complex transformation
+                             _atom_site.aniso_U[3][3]
+ANISOU[50-56]      u[0][1]  complex transformation
+                             _atom_site.aniso_U[1][2]
+ANISOU[57-63]      u[0][2]  complex transformation
+                             _atom_site.aniso_U[1][3]
+ANISOU[64-70]      u[1][2]  complex transformation
+                             _atom_site.aniso_U[2][3]
+
+SIGUIJ[1-6]        SIGUIJ   NA
+SIGUIJ[7-11]       serial   related to
+                             _atom_site.id (non-NMR entries)
+                             _atom_site.id (NMR before 2/99)
+                             _atom_site.pdb2cif_auth_id_in_model
+                                           (NMR since 2/99)
+SIGUIJ[13-16]      name     related to
+                             _atom_site.label_atom_id
+SIGUIJ[17]         altLoc   related to
+                             _atom_site.label_alt_id
+SIGUIJ[18-20]      resName  related to
+                             _atom_site.label_comp_id
+SIGUIJ[22]         chainID  approximately equivalent to
+                             _atom_site.label_asym_id
+SIGUIJ[23-26]      resSeq   complex transformation
+                             _atom_site.auth_seq_id
+SIGUIJ[27]         iCode    complex transformation
+                             _atom_site.auth_seq_id
+SIGUIJ[29-35]      sig[1][1] complex transformation
+                             _atom_site.aniso_U[1][1]_esd
+SIGUIJ[36-42]      sig[2][2] complex transformation
+                             _atom_site.aniso_U[2][2]_esd
+SIGUIJ[43-49]      sig[3][3] complex transformation
+                             _atom_site.aniso_U[3][3]_esd
+SIGUIJ[50-56]      sig[1][2] complex transformation
+                             _atom_site.aniso_U[1][2]_esd
+SIGUIJ[57-63]      sig[1][3] complex transformation
+                             _atom_site.aniso_U[1][3]_esd
+SIGUIJ[64-70]      sig[2][3] complex transformation
+                             _atom_site.aniso_U[2][3]_esd
+
+TER[1-6]           TER      NA
+TER[7-11]          serial
+TER[18-20]         resName
+TER[22]            chainID
+TER[23-26]         resSeq
+TER[27]            iCode
+
+HETATM[1-6]        HETATM   equivalent to
+                             _atom_site.group_PDB
+HETATM[7-11]       serial   related to
+                             _atom_site.id (non-NMR entries)
+                             _atom_site.id (NMR before 2/99)
+                             _atom_site.pdb2cif_auth_id_in_model
+                                           (NMR since 2/99)
+HETATM[13-16]      name     related to
+                             _atom_site.label_atom_id
+HETATM[17]         altLoc   related to
+                             _atom_site.label_alt_id
+HETATM[18-20]      resName  related to
+                             _atom_site.label_comp_id
+HETATM[22]         chainID  approximately equivalent to
+                             _atom_site.label_asym_id
+HETATM[23-26]      resSeq   complex transformation
+                             _atom_site.auth_seq_id
+HETATM[27]         iCode    complex transformation
+                             _atom_site.auth_seq_id
+HETATM[31-38]      x        related to
+                             _atom_site.cartn_x
+HETATM[39-46]      y        related to
+                             _atom_site.cartn_y
+HETATM[47-54]      z        related to
+                             _atom_site.cartn_z
+HETATM[55-60]      occupancy
+                            related to
+                             _atom_site.occupancy
+HETATM[61-66]      tempFactor
+                            related to
+                             _atom_site.B_iso_or_equiv
+HETATM[68-70]      ftNote   related to
+                             _atom_site.footnote_id
+HETATM[73-76]      segID
+HETATM[77-78]      element  related to
+                             _atom_site.type_symbol
+HETATM[79-80]      charge
+
+CONECT[1-6]        CONECT   NA
+CONECT[7-11]       serial   complex transformation
+                             _struct_conn.ptrn1...
+CONECT[12-16]      serial   complex transformation
+                             _struct_conn.ptnr2...
+CONECT[17-21]      serial   complex transformation
+                             _struct_conn.ptnr2...
+CONECT[22-26]      serial   complex transformation
+                             _struct_conn.ptnr2...
+CONECT[27-31]      serial   complex transformation
+                             _struct_conn.ptnr2...
+CONECT[32-36]      serial   complex transformation
+                             _struct_conn.ptnr2..
+CONECT[37-41]      serial   complex transformation
+                             _struct_conn.ptnr2..
+CONECT[42-46]      serial   complex transformation
+                             _struct_conn.ptnr2..
+CONECT[47-51]      serial   complex transformation
+                             _struct_conn.ptnr2..
+CONECT[52-56]      serial   complex transformation
+                             _struct_conn.ptnr2..
+CONECT[57-61]      serial   complex transformation
+                             _struct_conn.ptnr2..
+
+CISPEP[1-6]        CISPEP   NA
+CISPEP[8-10]       serNum   NA
+CISPEP[12-14]      pep1
+CISPEP[16]         chainID1
+CISPEP[18-21]      seqNum1
+CISPEP[22]         icode1
+CISPEP[26-28]      pep2     related to
+                             _struct_mon_prot.label_comp_id and
+                             _struct_mon_prot_cis.label_comp_id
+CISPEP[30]         chainID2 approximately equivalent to
+                             _struct_mon_prot.label_asym_id and
+                             _struct_mon_prot_cis.label_asym_id
+CISPEP[32-35]      seqNum2  complex transformation
+                             _struct_mon_prot.auth_seq_id and
+                             _struct_mon_prot_cis.auth_seq_id
+CISPEP[36]         icode2    complex transformation
+                             _struct_mon_prot.auth_seq_id and
+                             _struct_mon_prot_cis.auth_seq_id
+CISPEP[44-46]      modnum   eqivalent to ***PROPOSED***
+                             _struct_mon_prot.pdb2cif_label_model_id and
+                             _struct_mon_prot_cis.pdb2cif_label_model_id
+CISPEP[54-59]      measure  equivalent to
+                             _struct_mon_prot.omega
+
+MASTER[1-6]        MASTER
+MASTER[11-15]      numRemark
+MASTER[16-20]      numFtnote
+MASTER[21-25]      numHet
+MASTER[26-30]      numHelix
+MASTER[31-35]      numSheet
+MASTER[36-40]      numTurn
+MASTER[41-45]      numSite
+MASTER[46-50]      numXform
+MASTER[51-55]      numCoord
+MASTER[56-60]      numTer
+MASTER[61-65]      numConect
+MASTER[66-70]      numSeq
+
+END[1-6]           END

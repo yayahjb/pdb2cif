@@ -1,0 +1,6 @@
+#define convtext no
+#define auth_convtext yes
+#define verbose no
+#define dense_list no
+#define junior_on_last yes
+#define print_ter comment

@@ -1,0 +1,649 @@
+define(vnumb,`2.4.3')define(vdate,` 15 Jul 2005')<HTML>
+<HEAD>
+<TITLE>README.html</TITLE>
+</HEAD>
+ifdef(`GRAPHICS',
+<BODY BACKGROUND=".logos/pdb2cif_wallpaper.jpg">
+,
+<BODY>
+)
+define(concat,`$1'`$2')
+ifelse(DECOMP(),`NODECOMP',
+`define(`XXPATH',)',
+`define(`XXPATH',`ZPATH()/concat(`pdb2cif_',vnumb())/')')
+ifdef(`GRAPHICS',
+<form name=pdb2cif 
+action="http://arcib.dowling.edu/cgi-bin/cgiwrap/BernsteH/pdb2cif.csh" 
+method="get"><a href="http://www.iucr.org/iucr-top/welcome.html">
+<table border=0 cellpadding=0>
+<tr>
+<td align=left valign=middle>
+<img alt="[IUCr Home Page]" src=".logos/iucrhome.jpg"></a>
+<a href="http://www.iucr.org/iucr-top/cif/home.html">
+<img alt="[CIF Home Page]" src=".logos/cifhome.jpg"></a>
+<td width=100>&nbsp;
+
+<td valign=middle align=right width="*">
+<font size="-1">
+<input type=submit value="CLICK HERE for mmCIF of PDB ID:"></input>
+</font>
+<input type=text size=4 maxlength=4 name="pdbid" 
+value="nxxx"></input> <font size="-1"<b>&lt;&lt;&lt;==== ENTER PDB ID CODE HERE</b></font>
+</tr>
+</table>
+</form>
+<hr>
+,)
+ifdef(`GRAPHICS',
+
+<center>
+<IMG SRC=".logos/pdb2cif.jpg" ALT=" ">
+</center>
+,)
+<H2 ALIGN=CENTER>README for 
+<A HREF="XXPATH()pdb2cif.pl">pdb2cif.pl</A>, 
+<A HREF="XXPATH()pdb2cif.oawk">pdb2cif.oawk</A>, 
+<A HREF="XXPATH()pdb2cif.awk">pdb2cif.awk</A>
+</H2>
+<P>
+<CENTER>
+produced from 
+<A HREF="XXPATH()pdb2cif.m4">pdb2cif.m4</A>
+version vnumb() vdate() 
+</CENTER>
+<BR> <P>
+<H3 ALIGN=CENTER>Scripts to filter a PDB entry and produce a CIF file.  </H3>
+<BR>
+<CENTER>
+by<BR>
+Philip E. Bourne, Herbert J. Bernstein and Frances C. Bernstein
+</CENTER>
+<P>
+<CENTER>
+For a discussion of the rationale behind this software, see
+<A href="DISCUSS.pdb2cif.html">
+Translating PDB Entries into mmCIF
+</A>
+</CENTER>
+<P>
+<CENTER>	
+Work supported in part by IUCr (for HJB),
+US NSF, PHS, NIH, NCRR, NIGMS, NLM and DOE (for FCB prior to 1998), and
+US NSF grant no. BIR 9310154 (for PEB). 
+</CENTER>
+<P><hr>
+<H3 ALIGN=CENTER>
+Before using this software, please read the
+ifdef(`GRAPHICS',
+<BR>
+<A HREF = "NOTICE.html"><IMG SRC=".logos/noticeButton.jpg" ALT="NOTICE"></A><BR>
+,<A HREF = "NOTICE.html">Notice</A>)
+ and please read the IUCr
+ifdef(`GRAPHICS',
+<BR>
+<A HREF="IUCR_POLICY.html"> <IMG SRC=".logos/policyButton.jpg" ALT="Policy"></A>
+<BR>
+,<A HREF="IUCR_POLICY.html">Policy</A>)
+ on the Use of the Crystallographic Information File (CIF)
+</H3>
+<HR>
+<P>
+<CENTER>
+<STRONG>THE CONVERSION FROM PDB FORMAT TO CIF FORMAT IS COMPLEX<BR>
+</STRONG>
+<STRONG>******* USE WITH CAUTION *******<BR>
+</STRONG>
+COMMENTS AND SUGGESTIONS APPRECIATED<BR>
+</CENTER>
+<P>
+If you like the basic approach, thank Phil Bourne. 
+He did the real work of creating 
+pdb2cif. If you have problems with the adaptation to 
+cif_mm.dic or any other aspects of pdb2cif, send 
+email to  
+<script language="javascript" type="text/javascript">
+<!-- 
+      var name = "pdb2cif@";
+      var domain = "bernstein-plus-sons";
+      var domext = ".com";
+      document.write ("<a href=\"mailto:" + name + domain + domext + "\">" + name + domain + domext+"</a>");
+// -->
+</script>
+<noscript>
+pdb2cif&#64;bernstein-plus-sons&#46;com
+</noscript>
+<BR><P>
+<H3>The Authors</H3>
+<P>
+Philip E. Bourne,
+San Diego Supercomputer Center,
+PO Box 85608, San Diego, CA 92186-9785 USA<BR>
+email: 
+<script language="javascript" type="text/javascript">
+<!-- 
+      var name = "bourne@";
+      var domain = "sdsc";
+      var domext = ".edu";
+      document.write ("<a href=\"mailto:" + name + domain + domext + "\">" + name + domain + domext+"</a>");
+// -->
+</script>
+<noscript>
+<BR><P>
+bourne&#64;sdsc&#46;edu
+</noscript>
+<BR><P>
+Herbert J. Bernstein,
+Bernstein+Sons,
+5 Brewster Lane, Bellport, NY 11713<BR>
+email: 
+<script language="javascript" type="text/javascript">
+<!-- 
+      var name = "yaya@";
+      var domain = "bernstein-plus-sons";
+      var domext = ".com";
+      document.write ("<a href=\"mailto:" + name + domain + domext + "\">" + name + domain + domext+"</a>");
+// -->
+</script>
+<noscript>
+yaya&#64;bernstein-plus-sons&#46;com
+</noscript>
+<BR><P>
+Frances C. Bernstein,
+Bernstein+Sons,
+5 Brewster Lane, Bellport, NY 11713<BR>
+email: 
+<script language="javascript" type="text/javascript">
+<!-- 
+      var name = "fcb@";
+      var domain = "bernstein-plus-sons";
+      var domext = ".com";
+      document.write ("<a href=\"mailto:" + name + domain + domext + "\">" + name + domain + domext+"</a>");
+// -->
+</script>
+<noscript>
+fcb&#64;bernstein-plus-sons&#46;com
+</noscript>
+<BR><P>
+<H3>Where to Get pdb2cif</H3>
+<P>
+Current versions are available via http from: 
+<A HREF="http://www.bernstein-plus-sons.com/software/pdb2cif">
+http://www.bernstein-plus-sons.com/software/pdb2cif</A>,<BR>
+It is available as a compressed shar 
+<A HREF="pdb2cif.shar.Z">pdb2cif.shar.Z (3.0 megabytes)</A>, 
+a compressed C-shell shar
+<A HREF="pdb2cif.cshar.Z">pdb2cif.cshar.Z (3.0 megabytes)</A> or
+as individual files, as given in
+<A HREF="MANIFEST.html">the MANIFEST.</A>
+<P>
+If your system cannot handle a Unix-style compressed file, you may
+wish to download an uncompressed shar
+<A HREF="XXPATH()pdb2cif.shar"> pdb2cif.shar 
+</A> or an uncompressed cshar
+<A HREF="XXPATH()pdb2cif.cshar"> 
+pdb2cif.cshar</A>. <P>
+If you need a later version, and are willing to work with
+code that is changing, you may with to try the
+<A HREF="next_test_version"> next_test_version </A> (not always
+present)
+<P>
+<H3> Recent Changes </H3
+<P>
+Release 2.4.2 corrected a bug in the translation of SEQADV and
+MODRES which was causing some misaligned loops.  The bug
+was reported by dust@iwonka.med.virginia.edu.
+<P>
+Release 2.4.1 added support for PDBX_POLY_SEQ_SCHEME from
+the PDB extensions dictionary 
+(<a href="http://pdb.rutgers.edu/mmcif/dictionaries/ascii/mmcif_pdbx.dic">
+http://pdb.rutgers.edu/mmcif/dictionaries/ascii/mmcif_pdbx.dic</a>)
+<P>
+Release 2.3.9 fixed a Y2K bug reported and fixed by Helge Weissig 
+<helgew@SDSC.EDU>.
+<P>
+Release 2.3.8 corrected a problems with entries having more than 9 
+footnotes,
+corrects tokens from the pdb2cif_cif_mm dictionary to use the
+pdb2cif prefix consistently, with the option to suppress the prefix,
+and adds code to handle NMR entries produced by the RCSB PDB recently
+in which atom serial numbers repeat for each model.
+<P>
+Release 2.3.7 made the alignment of the ATOM list to SEQRES more robust,
+making use of the ATOM list connectivity to identify segments that should
+have closely related alignment.  All important summary diagnostics then
+began with the string "#=#" to simplify extraction of this information
+with grep.  Non-standard charges on ATOM records were converted to blank or to
+a single digit followed by a sign.
+<P>
+Release 2.3.6 corrected some comments and documentation.
+<P>
+Release 2.3.5 corrected the handling of long references and JRNL PUBL
+records.  Residue names which had been quoted with a single quote mark are
+now quoted with a double quote mark.
+<P>
+Release 2.3.4 corrected the handling of two blank fields in SEQADV and
+some typos in STRUCT_MON_PROT tags.
+<P>
+Release 2.3.3.2 corrected a spurious header generated in the CIF when a PDB
+entry has SSBOND records and no secondary structure.
+<P>
+Release 2.3.3.1 was a minor revision to the web pages of version 2.3.3.
+URLs in comments in the program were also updated.
+Changes were made in the m4 script for the gnu m4 handling of `format'.
+<P>
+Release 2.3.3 was an interim revision to pdb2cif to support the changes
+in tokens introduced with the mmCIF dictionary 0.8.10.  The only change
+done at this stage was to remap the names currently in use.  Additional
+changes will be needed in the future to support parsing to make use of
+the additional tokens.
+<P>
+Release 2.3.2 has several changes for compliance with the mmCIF
+dictionary
+version 0.8.02,
+in response to some problems discovered by John Westbrook and
+the checking provided by his ciflib routines.  The most visible changes are
+the listing of the standard residues used in an entry in the CHEM_COMP
+category, changing use of a quoted blank field as a value for
+_atom_site.auth_asym_id to a period, and moving some data items common to
+a loop into the loop itself.
+<P>
+Release 2.3.1 corrects some minor problems in release 2.3.0.  In particular
+a problem with a bad item count and a bad date on machines running some
+older versions of perl has been corrected.  Extra warnings for NMR entries
+with unusual uses of B-values or occupancies have been added.
+<P>
+Release 2.3.0 was an update to Release 2.2.7 correcting some minor
+problems with data item types, long publication names, and a failure
+to report CSD codens.
+<P>
+Release 2.2.7 was the first pdb2cif release after PDB entries compliant with
+the February 1996 V2.0 PDB `format' became available.
+The `format' of data items in ATOM_SITE lists derived from V2.0
+entries was corrected, and the mapping of HETNAM and HETSYN
+moved from ENTITY_NAME_SYS to ENTITY_NAME_COM.
+<P>
+For more information and  prior revisions, see
+<A HREF="CHANGES.html"> CHANGES </A>.
+<P>
+<H3>Compliance</H3>
+This version is intended to produce mmCIF files conforming
+to mmCIF version 0.8.02 and above.  Full compliance is not possible in
+some areas.  In particular, most of the values used for _exptl.method, and
+some of the values used for _struct_conf_type.id do not
+conform to the enumerations in the dictionary.  Full compliance would require
+agreement between the PDB and COMCIFS on equivalent lists of values.
+<P>Definitions of the following tokens would have to be appended to the mmCIF
+dictionary for validation of pdb2cif output  (see <a href="pdb2cif_cif_mm_0.0.05.dic">pdb2cif_cif_mm_0.0.05.dic)</a>: 
+
+<DL>
+<dt><b>_atom_site.pdb2cif_auth_id_in_model</b></dt>
+<dt><b>_atom_site.pdb2cif_auth_model_id</b></dt>
+<dt><b>_atom_site.pdb2cif_id_in_model</b></dt>
+<dt><b>_atom_site.pdb2cif_label_model_id</b></dt>
+<dt><b>_atom_site_anisotrop.pdb2cif_id_in_model</b></dt>
+<dt><b>_atom_site_anisotrop.pdb2cif_label_model_id</b></dt>
+<dd>The model_id tokens specify the particular model.  The id_in_model
+tokens specify the atomic site within a model.<P></dd>
+<dt><b>_geom_angle.pdb2cif_auth_id_in_model_1</b></dt>
+<dt><b>_geom_angle.pdb2cif_auth_id_in_model_2</b></dt>
+<dt><b>_geom_angle.pdb2cif_auth_id_in_model_3</b></dt>
+<dt><b>_geom_angle.pdb2cif_auth_model_id</b></dt>
+<dt><b>_geom_angle.pdb2cif_id_in_model_1</b></dt>
+<dt><b>_geom_angle.pdb2cif_id_in_model_2</b></dt>
+<dt><b>_geom_angle.pdb2cif_id_in_model_3</b></dt>
+<dt><b>_geom_angle.pdb2cif_label_model_id</b></dt>
+<dt><b>_geom_bond.pdb2cif_auth_id_in_model_1</b></dt>
+<dt><b>_geom_bond.pdb2cif_auth_id_in_model_2</b></dt>
+<dt><b>_geom_bond.pdb2cif_auth_model_id</b></dt>
+<dt><b>_geom_bond.pdb2cif_id_in_model_1</b></dt>
+<dt><b>_geom_bond.pdb2cif_id_in_model_2</b></dt>
+<dt><b>_geom_bond.pdb2cif_label_model_id</b></dt>
+<dt><b>_geom_contact.pdb2cif_auth_id_in_model_1</b></dt>
+<dt><b>_geom_contact.pdb2cif_auth_id_in_model_2</b></dt>
+<dt><b>_geom_contact.pdb2cif_auth_model_id</b></dt>
+<dt><b>_geom_contact.pdb2cif_id_in_model_1</b></dt>
+<dt><b>_geom_contact.pdb2cif_id_in_model_2</b></dt>
+<dt><b>_geom_contact.pdb2cif_label_model_id</b></dt>
+<dt><b>_geom_hbond.pdb2cif_auth_id_in_model_A</b></dt>
+<dt><b>_geom_hbond.pdb2cif_auth_id_in_model_D</b></dt>
+<dt><b>_geom_hbond.pdb2cif_auth_id_in_model_H</b></dt>
+<dt><b>_geom_hbond.pdb2cif_auth_model_id</b></dt>
+<dt><b>_geom_hbond.pdb2cif_id_in_model_A</b></dt>
+<dt><b>_geom_hbond.pdb2cif_id_in_model_D</b></dt>
+<dt><b>_geom_hbond.pdb2cif_id_in_model_H</b></dt>
+<dt><b>_geom_hbond.pdb2cif_label_model_id</b></dt>
+<dt><b>_geom_torsion.pdb2cif_auth_id_in_model_1</b></dt>
+<dt><b>_geom_torsion.pdb2cif_auth_id_in_model_2</b></dt>
+<dt><b>_geom_torsion.pdb2cif_auth_id_in_model_3</b></dt>
+<dt><b>_geom_torsion.pdb2cif_auth_id_in_model_4</b></dt>
+<dt><b>_geom_torsion.pdb2cif_auth_model_id</b></dt>
+<dt><b>_geom_torsion.pdb2cif_id_in_model_1</b></dt>
+<dt><b>_geom_torsion.pdb2cif_id_in_model_2</b></dt>
+<dt><b>_geom_torsion.pdb2cif_id_in_model_3</b></dt>
+<dt><b>_geom_torsion.pdb2cif_id_in_model_4</b></dt>
+<dt><b>_geom_torsion.pdb2cif_label_model_id</b></dt>
+<dd>The _geom_... model-related tokens are pointers to the equivalent
+_atom_site tokens to allow for the specification of model-specific
+geometry<P></dd>
+<dt><b>_struct_conn.pdb2cif_ptnr1_atom_site_id</b></dt>
+<dt><b>_struct_conn.pdb2cif_ptnr2_atom_site_id</b></dt>
+<dd>These pointers to _atom_site.id allow the specific atom records
+involved in bonds to be specified for convenience of graphics
+programs<P></dd>
+<dt><b>_struct_conn.pdb2cif_auth_model_id</b></dt>
+<dt><b>_struct_conn.pdb2cif_ptnr1_auth_id_in_model</b></dt>
+<dt><b>_struct_conn.pdb2cif_ptnr2_auth_id_in_model</b></dt>
+<dt><b>_struct_conn.pdb2cif_label_model_id</b></dt>
+<dt><b>_struct_conn.pdb2cif_ptnr1_id_in_model</b></dt>
+<dt><b>_struct_conn.pdb2cif_ptnr2_id_in_model</b></dt>
+<dd>The _struct_conn... model-related token are pointers to the equivalent
+_atom-site tokens to allow for the specification of model-specific
+bonds<P></dd>
+<dt><b>_struct_mon_prot.pdb2cif_label_model_id</b></dt>
+<dt><b>_struct_mon_prot_cis.pdb2cif_label_model_id</b></dt>
+<dd>to carry model-specificinformation in CISPEP translation<P></dd>
+<dt><b>_struct_ref_seq_dif.pdb2cif_db_seq_num</b></dt>
+<dd>to allow for a more complete mapping of sequence alignments<P></dd>
+<dt><b>_pdbx_poly_seq_scheme.asym_id</b></dt>
+<dt><b>_pdbx_poly_seq_scheme.entity_id</b></dt>
+<dt><b>_pdbx_poly_seq_scheme.seq_id</b></dt>
+<dt><b>_pdbx_poly_seq_scheme.mon_id</b></dt>
+<dt><b>_pdbx_poly_seq_scheme.auth_num</b></dt>
+<dt><b>_pdbx_poly_seq_scheme.pdb_strand_id</b></dt>
+<dd>the _pdbx_poly_seq_scheme tokens are from the PDB extensions
+dictionary, and provide a convenient mapping between the
+full entity sequences and the atom list sequences with
+markers for sheet strands.</dd>
+</dl>
+<P>
+Note:  To conform with COMCIFS procedures, all the pdb2cif-specific
+tokens now include a "pdb2cif_" prefix.  If the tokens are adopted in the mmCIF
+dictionary, the prefix will be dropped.
+<P>
+
+<P>
+<H3>Conversion Notes and Known Problems</H3>
+<P>
+This program produces summary warnings as comments 
+at the end of each output CIF.  Each diagnostic begins with the string "#=#",
+so that a summary may be extracted using grep.
+Unconverted records are captured in the AUDIT 
+category warnings and uncoverted records 
+should be examined carefully.<P>
+<STRONG>COMPND, SOURCE, TITLE and CAVEAT</STRONG>
+ are merged into _struct.title without further parsing. A great deal of information 
+could be derived from the entries which use the PDB 1995 `format' description when 
+sufficient information for mapping of MOL_ID to entities is available.<BR>
+<P>
+<STRONG>REMARK</STRONG>
+records currently are mapped without parsing. 
+There is a great deal of information 
+in these records which can be parsed in more recent entries.
+It should be noted that only columns 12-70 of REMARKs are mapped to mmCIF.
+<P>
+<STRONG>EXPDTA</STRONG>
+records use values which do not have a direct mapping to enumerated values 
+for _explt.method
+<P>
+<STRONG>ATOM/HETATM</STRONG>
+records in newer PDB entries have a field for the XPLOR segment id.  The field
+is mapped to _atom_site.auth_asym_id, but the data type used in the dictionary
+does not permit embedded blanks, which may occur in the field.   The problem
+is side-stepped for totally blank fields by mapping them to a period.
+<P>
+Additional data items for categories like _struct_topol will 
+need to be added as they evolve.<BR>
+<P>
+The output produced is in fairly close compliance with mmCIF 0.8.2.  However,
+we have introduced a few additional tokens via the PUBL_MANUSCRIPT_INCL
+category.
+<P>  
+The definitive documentation of the program is, of course, the program itself.
+However, for those interested in the background relationship between
+between the PDB `format' and mmCIF, we have included a partial
+<A HREF="concord.html">concordance.</A>
+<P>
+This program is distributed as an m4 macro script
+ &quot;pdb2cif.m4&quot; from which three executable 
+scripts have been made:
+ &quot;<A HREF="XXPATH()pdb2cif.pl">pdb2cif.pl</A>&quot;,
+ &quot;<A HREF="XXPATH()pdb2cif.oawk">pdb2cif.oawk</A>&quot;,
+ &quot;<A HREF="XXPATH()pdb2cif.awk">pdb2cif.awk</A>&quot;.
+A <A HREF="Makefile">makefile</A> is provided 
+to show how the executable scripts were made, but you need not rebuild 
+them. They are current. If you attempt to 
+rebuild the perl script you may have difficulty 
+with the awk to perl conversion program a2p, 
+which fails for this script on many 
+systems. A properly configured a2p is 
+provided in the distribution directory 
+in <A HREF="perl5.001.sgi.built.tar.Z">perl5.001_sgi.built.tar.Z</A>.<BR>
+<P>
+<H3>Installing pdb2cif</H3>
+<P> If your system is sufficiently similar
+to ours, then you may be able to install
+the program simply by making one of the three versions executable:
+<P>
+On most `unix' systems, you can make the script 
+into an executable program by executing 
+one of the following sets of commands, depending 
+on whether you want the perl, awk, 
+or old-awk version to be pdb2cif:<BR>
+<P>
+chmod 755 pdb2cif.pl<BR>
+ln -s pdb2cif.pl pdb2cif<BR>
+<P>
+chmod 755 pdb2cif.oawk<BR>
+ln -s pdb2cif.oawk pdb2cif<BR>
+<P>
+chmod 755 pdb2cif.awk<BR>
+ln -s pdb2cif.awk pdb2cif<BR>
+<P>
+after which pdb2cif may be executed directly.<BR>
+<P>
+<STRONG>NOTE</STRONG>
+<P>
+On some systems, you may need to use &quot;gawk&quot; 
+instead of &quot;awk&quot;. pdb2cif.awk uses 
+features which are _not_ found in the original 
+Aho, Kernighan, Weinberger, &quot;Awk - 
+a pattern scanning and processing language,&quot; 
+but which have since been added on most 
+systems: functions and the call to &quot;system&quot;.
+If the use of function or system generates a 
+syntax error, you may wish to obtain the gnu version of 
+awk, &quot;gawk&quot;, to be able to 
+run pdb2cif. The other system dependency you may have 
+is in the use of a system call 
+to &quot;date&quot;. Some systems do not support 
+the 4-digit year `format' code %Y, and others do not 
+support `format' codes at all. In the first case, 
+you can change the %Y to 19%y (just 
+remember to fix this in the year 2000), but 
+in the second case, you should just comment out the offending call. 
+The call is marked with a WARNING comment in the m4 script.<BR>
+<P>
+If your system is different, you may have to rebuild from the pdb2cif.m4.
+You do this with the program make and
+<A HREF="Makefile">Makefile</A>.  The first thing you need to know
+is where you have a working version of perl or gnu-awk.  Edit Makefile
+to show the correct path to at least one of them.  Be warned that rebuilding
+the perl version from a standard perl release may fail.  Before you do so,
+you may wish to save pdb2cif.pl elsewhere.  If you have a good verion
+of perl with a version of the utility a2p built with a very large OPSMAX, then
+execute the command
+<P>
+make perl_pdb2cif
+<P>
+If you have a good version of gnu-awk, then execute the command
+<P>
+make awk_pdb2cif
+<P>
+instead.
+<P>
+You can test your installation with
+<P>
+make tests 
+<H3>Flags  </H3>
+<P>
+The operation of this program is controlled 
+by the following flags, which may be set 
+by statements of the form<BR>
+<P>
+`#'`define' variable value<BR>
+<P>
+in the entry or by including header files with definitions in the list of arguments 
+before the entry.<BR>
+<P>
+The following flag is used to produce a more complete CIF entry, i.e. data items are 
+given, but with the value &quot;?&quot;.<BR>
+<P>
+`#'`define' verbose [yes|no]<BR>
+<P>
+where &quot;yes&quot; implies verbose output. <BR>
+<P>
+The following flag controls conversion of text fields using the type-setting codes 
+used in some PDB entries<BR>
+<P>
+`#'`define' convtext [yes|no]<BR>
+<P>
+where &quot;yes&quot; implies the use of the 1992 PDB `format' description typesetting conventions.<BR>
+<P>
+The following flags control conversion of author and editor names<BR>
+<P>
+`#'`define' auth_convtext [yes|conditional|no]<BR>
+`#'`define' junior_on_last [yes|no]<BR>
+<P>
+where &quot;yes&quot; for auth_convtext implies 
+the conversion of names independent of the setting 
+of convtext, &quot;conditional&quot; implies 
+&quot;yes&quot; only if convtext is &quot;yes&quot; and &quot;no&quot; means 
+to pass through the PDB style name unchanged. 
+If conversion is done, then &quot;yes&quot; for 
+junior_on_last will follow the COMCIFs convention 
+of keeping &quot;dynastic&quot; modifers, such 
+as &quot;Junior,&quot; &quot;Senior,&quot; 
+&quot;II,&quot; etc with the family name. The typesetting used differs 
+slightly from the 1992 PDB `format' description, 
+by forcing capitalization after &quot;'&quot; 
+and &quot;-&quot;. If the translations done 
+are not satisfactory, special cases may be handled 
+by including<BR>
+<P>
+`#'`define' name PDB_form name_value<BR>
+<P>
+where the PDB_form is the form of the name expected in the PDB and name_value is the 
+form to be used by this program. All blanks in either form must be replaced by &quot;_&quot;. 
+For example, you can give the following<BR>
+<P>
+`#'`define' name E.F.MEYER_JUNIOR Meyer Junior,_E.F.<BR>
+<P>
+If the same name is `define'd multiple times, only the last translation given will be 
+used. The PDB_form is not case-sensitive, but the name_value is.<BR>
+<P>
+The following flag controls the distribution of label_seq_id 
+to all atom site lines.  Select the value "yes" 
+if you do _not_ want this distribution done, but want denser atom lists<BR>
+<P>
+`#'`define' dense_list [yes|no]<BR>
+<P>
+The following flag controls the printing of TER records<BR>
+<P>
+`#'`define' print_ter [yes|no]<BR>
+
+<P>
+The following flag controls the use of the pdb2cif prefix
+for tags which are not part of the mmCIF dictionary.
+The possible values are "yes" to include the prefix or
+"no" to suppress them.  The default value is set by the
+m4 macro USEPREFIX in the <a href="Makefile">Makefile</a>
+<P>
+`#'`define' use_pdb2cif_prefix [yes|no]<BR>
+<P>
+
+
+<H3>Running the Program</H3>
+<P>
+You should put any flag definitions that will 
+be used for most entries into a file 
+named <A HREF="default.pdbh">default.pdbh</A>
+ (a sample is included in the distribution directory), 
+and any definitions required 
+by a particular entry into an file with the name of the 
+entry and the extension &quot;pdbh&quot;.
+The program and the header files should be 
+in your current working directory. If 
+you wish, you may put the program into 
+another directory and modify your path to point 
+to it, but the header files must be local, 
+or you will need to give rooted paths 
+for each of them.<BR>
+<P>
+Then you can convert a single file named entry.ent by excuting<BR>
+<P>
+pdb2cif default.pdbh entry.pdbh entry.ent &gt; entry.cif<BR>
+<P>
+for example<BR>
+<P>
+pdb2cif default.pdbh 4ins.pdbh 4ins.ent &gt; 4ins.cif<BR>
+<P>
+To run with a directory of pdb files such that *.ent -&gt; *.cif:<BR>
+<P>
+foreach i (*.ent)<BR>
+set head = ($i:r)<BR>
+touch $head.pdbh<BR>
+pdb2cif default.pdbh $head.pdbh $i &gt; $head.cif<BR>
+end<BR>
+<H3>Notes on the m4 script  </H3>
+<P>
+If you are reading the m4 script, 
+please note the macro definitions 
+used for the build. If you modify this program, please note the following:<BR>
+<P>
+You cannot use the m4 `substr' or `index'<BR>
+The quotation marks used are: \036 and \037<BR>
+The version for PERL is obtained by defining &quot;PERL&quot;<BR>
+Do not use &quot;split&quot; directly; use &quot;dosplit&quot;<BR>
+Defining &quot;NOLOWER&quot; replaces calls to the built-in &quot;tolower&quot; or &quot;toupper&quot; with loops<BR>
+Defining &quot;NOFUNCS&quot; caused the functions we `define' to be expanded in-line<BR>
+Defining &quot;BADSPLIT&quot; includes code to correct for a PERL field miscount<BR>
+
+<hr>
+Updated 6 October 2004
+<address>
+<script language="javascript" type="text/javascript">
+<!-- 
+      var name = "yaya@";
+      var domain = "bernstein-plus-sons";
+      var domext = ".com";
+      document.write ("<a href=\"mailto:" + name + domain + domext + "\">" + name + domain + domext+"</a>");
+// -->
+</script>
+<noscript>
+yaya&#64;bernstein-plus-sons&#46;com
+</noscript>
+<script language="javascript" type="text/javascript">
+<!-- 
+      var name = "fcb@";
+      var domain = "bernstein-plus-sons";
+      var domext = ".com";
+      document.write ("<a href=\"mailto:" + name + domain + domext + "\">" + name + domain + domext+"</a>");
+// -->
+</script>
+<noscript>
+fcb&#64;bernstein-plus-sons&#46;com
+</noscript>
+<script language="javascript" type="text/javascript">
+<!-- 
+      var name = "bourne@";
+      var domain = "sdsc";
+      var domext = ".edu";
+      document.write ("<a href=\"mailto:" + name + domain + domext + "\">" + name + domain + domext+"</a>");
+// -->
+</script>
+<noscript>
+bourne&#64;sdsc&#46;edu
+</noscript>
+</address>
+</BODY>
+</HTML>

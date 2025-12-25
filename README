@@ -1,0 +1,487 @@
+          README for pdb2cif.pl, pdb2cif.oawk, pdb2cif.awk
+
+          produced from pdb2cif.m4 version 2.4.2 6 Oct 2004
+
+        Scripts to filter a PDB entry and produce a CIF file.
+
+                                 by
+   Philip E. Bourne, Herbert J. Bernstein and Frances C. Bernstein
+
+     For a discussion of the rationale behind this software, see
+                 Translating PDB Entries into mmCIF 
+
+     Work supported in part by IUCr (for HJB), US NSF, PHS, NIH,
+    NCRR, NIGMS, NLM and DOE (for FCB prior to 1998), and US NSF
+                  grant no. BIR 9310154 (for PEB).
+     __________________________________________________________
+
+             Before using this software, please read the
+                               NOTICE 
+                      and please read the IUCr
+                               Policy 
+      on the Use of the Crystallographic Information File (CIF)
+     __________________________________________________________
+
+       THE CONVERSION FROM PDB FORMAT TO CIF FORMAT IS COMPLEX
+                  ******* USE WITH CAUTION *******
+                COMMENTS AND SUGGESTIONS APPRECIATED
+
+   If you like the basic approach, thank Phil Bourne. He did the
+   real work of creating pdb2cif. If you have problems with the
+   adaptation to cif_mm.dic or any other aspects of pdb2cif, send
+   email to pdb2cif@bernstein-plus-sons.com
+
+  The Authors
+
+   Philip E. Bourne, San Diego Supercomputer Center, PO Box 85608,
+   San Diego, CA 92186-9785 USA
+   email:
+
+   bourne@sdsc.edu
+
+   Herbert J. Bernstein, Bernstein+Sons, 5 Brewster Lane,
+   Bellport, NY 11713
+   email: yaya@bernstein-plus-sons.com
+
+   Frances C. Bernstein, Bernstein+Sons, 5 Brewster Lane,
+   Bellport, NY 11713
+   email: fcb@bernstein-plus-sons.com
+
+  Where to Get pdb2cif
+
+   Current versions are available via http from:
+   http://www.bernstein-plus-sons.com/software/pdb2cif,
+   It is available as a compressed shar pdb2cif.shar.Z (3.0
+   megabytes), a compressed C-shell shar pdb2cif.cshar.Z (3.0
+   megabytes) or as individual files, as given in the MANIFEST.
+
+   If your system cannot handle a Unix-style compressed file, you
+   may wish to download an uncompressed shar pdb2cif.shar or an
+   uncompressed cshar pdb2cif.cshar.
+
+   If you need a later version, and are willing to work with code
+   that is changing, you may with to try the next_test_version
+   (not always present)
+
+  Recent Changes
+
+   Release 2.4.2 corrected a bug in the translation of SEQADV and
+   MODRES which was causing some misaligned loops. The bug was
+   reported by dust@iwonka.med.virginia.edu.
+
+   Release 2.4.1 added support for PDBX_POLY_SEQ_SCHEME from the
+   PDB extensions dictionary (
+   http://pdb.rutgers.edu/mmcif/dictionaries/ascii/mmcif_pdbx.dic
+   )
+
+   Release 2.3.9 fixed a Y2K bug reported and fixed by Helge
+   Weissig .
+
+   Release 2.3.8 corrected a problems with entries having more
+   than 9 footnotes, corrects tokens from the pdb2cif_cif_mm
+   dictionary to use the pdb2cif prefix consistently, with the
+   option to suppress the prefix, and adds code to handle NMR
+   entries produced by the RCSB PDB recently in which atom serial
+   numbers repeat for each model.
+
+   Release 2.3.7 made the alignment of the ATOM list to SEQRES
+   more robust, making use of the ATOM list connectivity to
+   identify segments that should have closely related alignment.
+   All important summary diagnostics then began with the string
+   "#=#" to simplify extraction of this information with grep.
+   Non-standard charges on ATOM records were converted to blank or
+   to a single digit followed by a sign.
+
+   Release 2.3.6 corrected some comments and documentation.
+
+   Release 2.3.5 corrected the handling of long references and
+   JRNL PUBL records. Residue names which had been quoted with a
+   single quote mark are now quoted with a double quote mark.
+
+   Release 2.3.4 corrected the handling of two blank fields in
+   SEQADV and some typos in STRUCT_MON_PROT tags.
+
+   Release 2.3.3.2 corrected a spurious header generated in the
+   CIF when a PDB entry has SSBOND records and no secondary
+   structure.
+
+   Release 2.3.3.1 was a minor revision to the web pages of
+   version 2.3.3. URLs in comments in the program were also
+   updated. Changes were made in the m4 script for the gnu m4
+   handling of format.
+
+   Release 2.3.3 was an interim revision to pdb2cif to support the
+   changes in tokens introduced with the mmCIF dictionary 0.8.10.
+   The only change done at this stage was to remap the names
+   currently in use. Additional changes will be needed in the
+   future to support parsing to make use of the additional tokens.
+
+   Release 2.3.2 has several changes for compliance with the mmCIF
+   dictionary version 0.8.02, in response to some problems
+   discovered by John Westbrook and the checking provided by his
+   ciflib routines. The most visible changes are the listing of
+   the standard residues used in an entry in the CHEM_COMP
+   category, changing use of a quoted blank field as a value for
+   _atom_site.auth_asym_id to a period, and moving some data items
+   common to a loop into the loop itself.
+
+   Release 2.3.1 corrects some minor problems in release 2.3.0. In
+   particular a problem with a bad item count and a bad date on
+   machines running some older versions of perl has been
+   corrected. Extra warnings for NMR entries with unusual uses of
+   B-values or occupancies have been added.
+
+   Release 2.3.0 was an update to Release 2.2.7 correcting some
+   minor problems with data item types, long publication names,
+   and a failure to report CSD codens.
+
+   Release 2.2.7 was the first pdb2cif release after PDB entries
+   compliant with the February 1996 V2.0 PDB format became
+   available. The format of data items in ATOM_SITE lists derived
+   from V2.0 entries was corrected, and the mapping of HETNAM and
+   HETSYN moved from ENTITY_NAME_SYS to ENTITY_NAME_COM.
+
+   For more information and prior revisions, see CHANGES .
+
+  Compliance
+
+   This version is intended to produce mmCIF files conforming to
+   mmCIF version 0.8.02 and above. Full compliance is not possible
+   in some areas. In particular, most of the values used for
+   _exptl.method, and some of the values used for
+   _struct_conf_type.id do not conform to the enumerations in the
+   dictionary. Full compliance would require agreement between the
+   PDB and COMCIFS on equivalent lists of values.
+
+   Definitions of the following tokens would have to be appended
+   to the mmCIF dictionary for validation of pdb2cif output (see
+   pdb2cif_cif_mm_0.0.05.dic):
+
+   _atom_site.pdb2cif_auth_id_in_model
+   _atom_site.pdb2cif_auth_model_id
+   _atom_site.pdb2cif_id_in_model
+   _atom_site.pdb2cif_label_model_id
+   _atom_site_anisotrop.pdb2cif_id_in_model
+   _atom_site_anisotrop.pdb2cif_label_model_id
+          The model_id tokens specify the particular model. The
+          id_in_model tokens specify the atomic site within a
+          model.
+
+   _geom_angle.pdb2cif_auth_id_in_model_1
+   _geom_angle.pdb2cif_auth_id_in_model_2
+   _geom_angle.pdb2cif_auth_id_in_model_3
+   _geom_angle.pdb2cif_auth_model_id
+   _geom_angle.pdb2cif_id_in_model_1
+   _geom_angle.pdb2cif_id_in_model_2
+   _geom_angle.pdb2cif_id_in_model_3
+   _geom_angle.pdb2cif_label_model_id
+   _geom_bond.pdb2cif_auth_id_in_model_1
+   _geom_bond.pdb2cif_auth_id_in_model_2
+   _geom_bond.pdb2cif_auth_model_id
+   _geom_bond.pdb2cif_id_in_model_1
+   _geom_bond.pdb2cif_id_in_model_2
+   _geom_bond.pdb2cif_label_model_id
+   _geom_contact.pdb2cif_auth_id_in_model_1
+   _geom_contact.pdb2cif_auth_id_in_model_2
+   _geom_contact.pdb2cif_auth_model_id
+   _geom_contact.pdb2cif_id_in_model_1
+   _geom_contact.pdb2cif_id_in_model_2
+   _geom_contact.pdb2cif_label_model_id
+   _geom_hbond.pdb2cif_auth_id_in_model_A
+   _geom_hbond.pdb2cif_auth_id_in_model_D
+   _geom_hbond.pdb2cif_auth_id_in_model_H
+   _geom_hbond.pdb2cif_auth_model_id
+   _geom_hbond.pdb2cif_id_in_model_A
+   _geom_hbond.pdb2cif_id_in_model_D
+   _geom_hbond.pdb2cif_id_in_model_H
+   _geom_hbond.pdb2cif_label_model_id
+   _geom_torsion.pdb2cif_auth_id_in_model_1
+   _geom_torsion.pdb2cif_auth_id_in_model_2
+   _geom_torsion.pdb2cif_auth_id_in_model_3
+   _geom_torsion.pdb2cif_auth_id_in_model_4
+   _geom_torsion.pdb2cif_auth_model_id
+   _geom_torsion.pdb2cif_id_in_model_1
+   _geom_torsion.pdb2cif_id_in_model_2
+   _geom_torsion.pdb2cif_id_in_model_3
+   _geom_torsion.pdb2cif_id_in_model_4
+   _geom_torsion.pdb2cif_label_model_id
+          The _geom_... model-related tokens are pointers to the
+          equivalent _atom_site tokens to allow for the
+          specification of model-specific geometry
+
+   _struct_conn.pdb2cif_ptnr1_atom_site_id
+   _struct_conn.pdb2cif_ptnr2_atom_site_id
+          These pointers to _atom_site.id allow the specific atom
+          records involved in bonds to be specified for
+          convenience of graphics programs
+
+   _struct_conn.pdb2cif_auth_model_id
+   _struct_conn.pdb2cif_ptnr1_auth_id_in_model
+   _struct_conn.pdb2cif_ptnr2_auth_id_in_model
+   _struct_conn.pdb2cif_label_model_id
+   _struct_conn.pdb2cif_ptnr1_id_in_model
+   _struct_conn.pdb2cif_ptnr2_id_in_model
+          The _struct_conn... model-related token are pointers to
+          the equivalent _atom-site tokens to allow for the
+          specification of model-specific bonds
+
+   _struct_mon_prot.pdb2cif_label_model_id
+   _struct_mon_prot_cis.pdb2cif_label_model_id
+          to carry model-specificinformation in CISPEP translation
+
+   _struct_ref_seq_dif.pdb2cif_db_seq_num
+          to allow for a more complete mapping of sequence
+          alignments
+
+   _pdbx_poly_seq_scheme.asym_id
+   _pdbx_poly_seq_scheme.entity_id
+   _pdbx_poly_seq_scheme.seq_id
+   _pdbx_poly_seq_scheme.mon_id
+   _pdbx_poly_seq_scheme.auth_num
+   _pdbx_poly_seq_scheme.pdb_strand_id
+          the _pdbx_poly_seq_scheme tokens are from the PDB
+          extensions dictionary, and provide a convenient mapping
+          between the full entity sequences and the atom list
+          sequences with markers for sheet strands.
+
+   Note: To conform with COMCIFS procedures, all the
+   pdb2cif-specific tokens now include a "pdb2cif_" prefix. If the
+   tokens are adopted in the mmCIF dictionary, the prefix will be
+   dropped.
+
+  Conversion Notes and Known Problems
+
+   This program produces summary warnings as comments at the end
+   of each output CIF. Each diagnostic begins with the string
+   "#=#", so that a summary may be extracted using grep.
+   Unconverted records are captured in the AUDIT category warnings
+   and uncoverted records should be examined carefully.
+
+   COMPND, SOURCE, TITLE and CAVEAT are merged into _struct.title
+   without further parsing. A great deal of information could be
+   derived from the entries which use the PDB 1995 format
+   description when sufficient information for mapping of MOL_ID
+   to entities is available.
+
+   REMARK records currently are mapped without parsing. There is a
+   great deal of information in these records which can be parsed
+   in more recent entries. It should be noted that only columns
+   12-70 of REMARKs are mapped to mmCIF.
+
+   EXPDTA records use values which do not have a direct mapping to
+   enumerated values for _explt.method
+
+   ATOM/HETATM records in newer PDB entries have a field for the
+   XPLOR segment id. The field is mapped to
+   _atom_site.auth_asym_id, but the data type used in the
+   dictionary does not permit embedded blanks, which may occur in
+   the field. The problem is side-stepped for totally blank fields
+   by mapping them to a period.
+
+   Additional data items for categories like _struct_topol will
+   need to be added as they evolve.
+
+   The output produced is in fairly close compliance with mmCIF
+   0.8.2. However, we have introduced a few additional tokens via
+   the PUBL_MANUSCRIPT_INCL category.
+
+   The definitive documentation of the program is, of course, the
+   program itself. However, for those interested in the background
+   relationship between between the PDB format and mmCIF, we have
+   included a partial concordance.
+
+   This program is distributed as an m4 macro script "pdb2cif.m4"
+   from which three executable scripts have been made:
+   "pdb2cif.pl", "pdb2cif.oawk", "pdb2cif.awk". A makefile is
+   provided to show how the executable scripts were made, but you
+   need not rebuild them. They are current. If you attempt to
+   rebuild the perl script you may have difficulty with the awk to
+   perl conversion program a2p, which fails for this script on
+   many systems. A properly configured a2p is provided in the
+   distribution directory in perl5.001_sgi.built.tar.Z.
+
+  Installing pdb2cif
+
+   If your system is sufficiently similar to ours, then you may be
+   able to install the program simply by making one of the three
+   versions executable:
+
+   On most unix systems, you can make the script into an
+   executable program by executing one of the following sets of
+   commands, depending on whether you want the perl, awk, or
+   old-awk version to be pdb2cif:
+
+   chmod 755 pdb2cif.pl
+   ln -s pdb2cif.pl pdb2cif
+
+   chmod 755 pdb2cif.oawk
+   ln -s pdb2cif.oawk pdb2cif
+
+   chmod 755 pdb2cif.awk
+   ln -s pdb2cif.awk pdb2cif
+
+   after which pdb2cif may be executed directly.
+
+   NOTE
+
+   On some systems, you may need to use "gawk" instead of "awk".
+   pdb2cif.awk uses features which are _not_ found in the original
+   Aho, Kernighan, Weinberger, "Awk - a pattern scanning and
+   processing language," but which have since been added on most
+   systems: functions and the call to "system". If the use of
+   function or system generates a syntax error, you may wish to
+   obtain the gnu version of awk, "gawk", to be able to run
+   pdb2cif. The other system dependency you may have is in the use
+   of a system call to "date". Some systems do not support the
+   4-digit year format code %Y, and others do not support format
+   codes at all. In the first case, you can change the %Y to 19%y
+   (just remember to fix this in the year 2000), but in the second
+   case, you should just comment out the offending call. The call
+   is marked with a WARNING comment in the m4 script.
+
+   If your system is different, you may have to rebuild from the
+   pdb2cif.m4. You do this with the program make and Makefile. The
+   first thing you need to know is where you have a working
+   version of perl or gnu-awk. Edit Makefile to show the correct
+   path to at least one of them. Be warned that rebuilding the
+   perl version from a standard perl release may fail. Before you
+   do so, you may wish to save pdb2cif.pl elsewhere. If you have a
+   good verion of perl with a version of the utility a2p built
+   with a very large OPSMAX, then execute the command
+
+   make perl_pdb2cif
+
+   If you have a good version of gnu-awk, then execute the command
+
+   make awk_pdb2cif
+
+   instead.
+
+   You can test your installation with
+
+   make tests
+
+  Flags
+
+   The operation of this program is controlled by the following
+   flags, which may be set by statements of the form
+
+   #define variable value
+
+   in the entry or by including header files with definitions in
+   the list of arguments before the entry.
+
+   The following flag is used to produce a more complete CIF
+   entry, i.e. data items are given, but with the value "?".
+
+   #define verbose [yes|no]
+
+   where "yes" implies verbose output.
+
+   The following flag controls conversion of text fields using the
+   type-setting codes used in some PDB entries
+
+   #define convtext [yes|no]
+
+   where "yes" implies the use of the 1992 PDB format description
+   typesetting conventions.
+
+   The following flags control conversion of author and editor
+   names
+
+   #define auth_convtext [yes|conditional|no]
+   #define junior_on_last [yes|no]
+
+   where "yes" for auth_convtext implies the conversion of names
+   independent of the setting of convtext, "conditional" implies
+   "yes" only if convtext is "yes" and "no" means to pass through
+   the PDB style name unchanged. If conversion is done, then "yes"
+   for junior_on_last will follow the COMCIFs convention of
+   keeping "dynastic" modifers, such as "Junior," "Senior," "II,"
+   etc with the family name. The typesetting used differs slightly
+   from the 1992 PDB format description, by forcing capitalization
+   after "'" and "-". If the translations done are not
+   satisfactory, special cases may be handled by including
+
+   #define name PDB_form name_value
+
+   where the PDB_form is the form of the name expected in the PDB
+   and name_value is the form to be used by this program. All
+   blanks in either form must be replaced by "_". For example, you
+   can give the following
+
+   #define name E.F.MEYER_JUNIOR Meyer Junior,_E.F.
+
+   If the same name is defined multiple times, only the last
+   translation given will be used. The PDB_form is not
+   case-sensitive, but the name_value is.
+
+   The following flag controls the distribution of label_seq_id to
+   all atom site lines. Select the value "yes" if you do _not_
+   want this distribution done, but want denser atom lists
+
+   #define dense_list [yes|no]
+
+   The following flag controls the printing of TER records
+
+   #define print_ter [yes|no]
+
+   The following flag controls the use of the pdb2cif prefix for
+   tags which are not part of the mmCIF dictionary. The possible
+   values are "yes" to include the prefix or "no" to suppress
+   them. The default value is set by the m4 macro USEPREFIX in the
+   Makefile
+
+   #define use_pdb2cif_prefix [yes|no]
+
+  Running the Program
+
+   You should put any flag definitions that will be used for most
+   entries into a file named default.pdbh (a sample is included in
+   the distribution directory), and any definitions required by a
+   particular entry into an file with the name of the entry and
+   the extension "pdbh". The program and the header files should
+   be in your current working directory. If you wish, you may put
+   the program into another directory and modify your path to
+   point to it, but the header files must be local, or you will
+   need to give rooted paths for each of them.
+
+   Then you can convert a single file named entry.ent by excuting
+
+   pdb2cif default.pdbh entry.pdbh entry.ent > entry.cif
+
+   for example
+
+   pdb2cif default.pdbh 4ins.pdbh 4ins.ent > 4ins.cif
+
+   To run with a directory of pdb files such that *.ent -> *.cif:
+
+   foreach i (*.ent)
+   set head = ($i:r)
+   touch $head.pdbh
+   pdb2cif default.pdbh $head.pdbh $i > $head.cif
+   end
+
+  Notes on the m4 script
+
+   If you are reading the m4 script, please note the macro
+   definitions used for the build. If you modify this program,
+   please note the following:
+
+   You cannot use the m4 substr or index
+   The quotation marks used are: \036 and \037
+   The version for PERL is obtained by defining "PERL"
+   Do not use "split" directly; use "dosplit"
+   Defining "NOLOWER" replaces calls to the built-in "tolower" or
+   "toupper" with loops
+   Defining "NOFUNCS" caused the functions we define to be
+   expanded in-line
+   Defining "BADSPLIT" includes code to correct for a PERL field
+   miscount
+     __________________________________________________________
+
+   Updated 6 October 2004
+
+
+    yaya@bernstein-plus-sons.com fcb@bernstein-plus-sons.com
+    bourne@sdsc.edu

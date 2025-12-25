@@ -1,0 +1,1233 @@
+################################################################################
+#    This is a dictionary of proposed extensions to the mmCIF dictionary       #
+#    for use with the program pdb2cif (H. J. Bernstein, F. C. Bernstein,       #
+#    P. E. Bourne, "CIF Applications.  VIII.  pdb2cif: Translating PDB         #
+#    Entries into mmCIF Format,"J. Appl. Cryst., 31, 1998, pp. 282-295)        #
+#                                                                              #
+#    These tokens were used in pdb2cif ***WITHOUT*** the 'pdb2cif' prefix      #
+#    through pdb2cif version 2.3.7, (see version 0.0.01 of this dictonary)     #
+#    Starting with pdb2cif version 2.3.8, the use of the 'pdb2cif' became      #
+#    optional, controlled by the definition on use_pdb2cif_prefix              #
+#                                                                              #
+#    This dictionary may be obtained from                                      #
+#       ftp://bernstein-plus-sons.com/software/pdb2cif_cif_mm_0.0.05.dic       #
+#                                                                              #
+#    Comments and suggestions to:  yaya@bernstein-plus-sons.com                #
+#                                                                              #
+################################################################################
+
+
+
+data_pdb2cif_cif_mm.dic
+
+    _dictionary.title           pdb2cif_cif_mm.dic
+    _dictionary.version         0.0.05
+    _dictionary.datablock_id    pdb2cif_cif_mm.dic
+
+
+###############
+## ATOM_SITE ##
+###############
+
+save__atom_site.pdb2cif_auth_id_in_model
+    _item_description.description
+;              An alternative identifier for _atom_site.pdb2cif_id_in_model
+               that may be provided by an author in order to match the 
+               identification used in the publication that describes the 
+               structure.
+               
+               This is an optional component of the macromolecular identifier 
+               for this atom site.  If given, the value of 
+               _atom_site.pdb2cif_auth_id_in_model when combined with the 
+               value of _atom_site.pdb2cif_auth_model_id must uniquely identify
+               a record in the ATOM_SITE list, and, the same value of
+               atom_site.pdb2cif_auth_id_in_model should be used for each
+               appearance of the "same" atom in different models.
+
+               Note that this item need not be a number; it can be any unique
+               identifier.
+
+               This item does not replace _atom_site.id, which is required for
+               each ATOM_SITE record, and which is, as the category key, unique
+               for each record in the ATOM_SITE list.               
+;
+     loop_
+    _item.name
+    _item.category_id
+    _item.mandatory_code
+       '_atom_site.pdb2cif_auth_id_in_model'           atom_site            no
+       '_atom_site_anisotrop.pdb2cif_auth_id_in_model' atom_site_anisotrop  no
+       '_geom_angle.pdb2cif_auth_id_in_model_1'        geom_angle           no
+       '_geom_angle.pdb2cif_auth_id_in_model_2'        geom_angle           no
+       '_geom_angle.pdb2cif_auth_id_in_model_3'        geom_angle           no
+       '_geom_bond.pdb2cif_auth_id_in_model_1'         geom_bond            no
+       '_geom_bond.pdb2cif_auth_id_in_model_2'         geom_bond            no
+       '_geom_contact.pdb2cif_auth_id_in_model_1'      geom_contact         no
+       '_geom_contact.pdb2cif_auth_id_in_model_2'      geom_contact         no
+       '_geom_hbond.pdb2cif_auth_id_in_model_A'        geom_hbond           no
+       '_geom_hbond.pdb2cif_auth_id_in_model_D'        geom_hbond           no
+       '_geom_hbond.pdb2cif_auth_id_in_model_H'        geom_hbond           no
+       '_geom_torsion.pdb2cif_auth_id_in_model_1'      geom_torsion         no
+       '_geom_torsion.pdb2cif_auth_id_in_model_2'      geom_torsion         no
+       '_geom_torsion.pdb2cif_auth_id_in_model_3'      geom_torsion         no
+       '_geom_torsion.pdb2cif_auth_id_in_model_4'      geom_torsion         no
+       '_struct_conn.pdb2cif_ptnr1_auth_id_in_model'   struct_conn          no
+       '_struct_conn.pdb2cif_ptnr2_auth_id_in_model'   struct_conn          no
+     loop_
+    _item_linked.child_name
+    _item_linked.parent_name
+       '_atom_site_anisotrop.pdb2cif_auth_id_in_model'
+                                       '_atom_site.pdb2cif_auth_id_in_model'
+       '_geom_angle.pdb2cif_auth_id_in_model_1'
+                                       '_atom_site.pdb2cif_auth_id_in_model'
+       '_geom_angle.pdb2cif_auth_id_in_model_2'
+                                       '_atom_site.pdb2cif_auth_id_in_model'
+       '_geom_angle.pdb2cif_auth_id_in_model_3'
+                                       '_atom_site.pdb2cif_auth_id_in_model'
+       '_geom_bond.pdb2cif_auth_id_in_model_1'
+                                       '_atom_site.pdb2cif_auth_id_in_model'
+       '_geom_bond.pdb2cif_auth_id_in_model_2'
+                                       '_atom_site.pdb2cif_auth_id_in_model'
+       '_geom_contact.pdb2cif_auth_id_in_model_1'
+                                       '_atom_site.pdb2cif_auth_id_in_model'
+       '_geom_contact.pdb2cif_auth_id_in_model_2'
+                                       '_atom_site.pdb2cif_auth_id_in_model'
+       '_geom_hbond.pdb2cif_auth_id_in_model_A'
+                                       '_atom_site.pdb2cif_auth_id_in_model'
+       '_geom_hbond.pdb2cif_auth_id_in_model_D'
+                                       '_atom_site.pdb2cif_auth_id_in_model'
+       '_geom_hbond.pdb2cif_auth_id_in_model_H'
+                                       '_atom_site.pdb2cif_auth_id_in_model'
+       '_geom_torsion.pdb2cif_auth_id_in_model_1'
+                                       '_atom_site.pdb2cif_auth_id_in_model'
+       '_geom_torsion.pdb2cif_auth_id_in_model_2'
+                                       '_atom_site.pdb2cif_auth_id_in_model'
+       '_geom_torsion.pdb2cif_auth_id_in_model_3'
+                                       '_atom_site.pdb2cif_auth_id_in_model'
+       '_geom_torsion.pdb2cif_auth_id_in_model_4'
+                                       '_atom_site.pdb2cif_auth_id_in_model'
+       '_struct_conn.pdb2cif_ptnr1_auth_id_in_model'
+                                       '_atom_site.pdb2cif_auth_id_in_model'
+       '_struct_conn.pdb2cif_ptnr2_auth_id_in_model'
+                                       '_atom_site.pdb2cif_auth_id_in_model'
+    _item_type.code               code
+     save_
+
+
+save__atom_site.pdb2cif_auth_model_id
+    _item_description.description
+;              An alternative identifier for _atom_site.pdb2cif_label_model_id
+               that may be provided by an author in order to match the 
+               identification used in the publication that describes the 
+               structure.
+ 
+               A component of the macromolecular identifier for this atom site.
+               The value of _atom_site.auth_model_id associates the atom
+               site with a particular nmr model.
+               
+;
+     loop_
+    _item.name
+    _item.category_id
+    _item.mandatory_code
+       '_atom_site.pdb2cif_auth_model_id'              atom_site           no
+       '_atom_site_anisotrop.pdb2cif_auth_model_id'    atom_site_anisotrop no
+       '_geom_angle.pdb2cif_auth_model_id'             geom_angle          no
+       '_geom_bond.pdb2cif_auth_model_id'              geom_bond           no
+       '_geom_contact.pdb2cif_auth_model_id'           geom_contact        no
+       '_geom_hbond.pdb2cif_auth_model_id'             geom_hbond          no
+       '_geom_torsion.pdb2cif_auth_model_id'           geom_torsion        no
+       '_struct_conn.pdb2cif_auth_model_id'            struct_conn         no
+       '_struct_mon_prot.pdb2cif_auth_model_id'        struct_mon_prot     no
+       '_struct_mon_prot_cis.pdb2cif_auth_model_id'    struct_mon_prot     no
+    _item_type.code               code
+     loop_
+    _item_linked.child_name
+    _item_linked.parent_name
+       '_atom_site_anisotrop.pdb2cif_auth_model_id'
+                                            '_atom_site.pdb2cif_auth_model_id'
+       '_geom_angle.pdb2cif_auth_model_id'
+                                            '_atom_site.pdb2cif_auth_model_id'   
+       '_geom_bond.pdb2cif_auth_model_id'
+                                            '_atom_site.pdb2cif_auth_model_id'
+       '_geom_contact.pdb2cif_auth_model_id'
+                                            '_atom_site.pdb2cif_auth_model_id'
+       '_geom_hbond.pdb2cif_auth_model_id'
+                                            '_atom_site.pdb2cif_auth_model_id'
+       '_geom_torsion.pdb2cif_auth_model_id'
+                                            '_atom_site.pdb2cif_auth_model_id'
+       '_struct_conn.pdb2cif_auth_model_id'
+                                            '_atom_site.pdb2cif_auth_model_id'
+       '_struct_mon_prot.pdb2cif_auth_model_id'
+                                            '_atom_site.pdb2cif_auth_model_id'
+       '_struct_mon_prot.pdb2cif_auth_model_id'
+                                            '_atom_site.pdb2cif_auth_model_id'
+       '_struct_mon_prot_cis.pdb2cif_auth_model_id'
+                                            '_atom_site.pdb2cif_auth_model_id'
+     save_
+
+
+save__atom_site.pdb2cif_id_in_model
+    _item_description.description
+;              An optional component of the macromolecular identifier for this
+               atom site.  If given, the value of _atom_site.pdb2cif_id_in_model 
+               when combined with the value of _atom_site.pdb2cif_label_model_id 
+               must uniquely identify  a record in the ATOM_SITE list, and, the 
+               same value of atom_site.pdb2cif_id_in_model should be used for 
+               each appearance of the "same" atom in different models.
+
+               Note that this item need not be a number; it can be any unique
+               identifier.
+
+               This item does not replace _atom_site.id, which is required for
+               each ATOM_SITE record, and which is, as the category key, unique
+               for each record in the ATOM_SITE list.               
+;
+     loop_
+    _item.name
+    _item.category_id
+    _item.mandatory_code
+       '_atom_site.pdb2cif_id_in_model'            atom_site           no
+       '_atom_site_anisotrop.pdb2cif_id_in_model'  atom_site_anisotrop no
+       '_geom_angle.pdb2cif_id_in_model_1'         geom_angle          no
+       '_geom_angle.pdb2cif_id_in_model_2'         geom_angle          no
+       '_geom_angle.pdb2cif_id_in_model_3'         geom_angle          no
+       '_geom_bond.pdb2cif_id_in_model_1'          geom_bond           no
+       '_geom_bond.pdb2cif_id_in_model_2'          geom_bond           no
+       '_geom_contact.pdb2cif_id_in_model_1'       geom_contact        no
+       '_geom_contact.pdb2cif_id_in_model_2'       geom_contact        no
+       '_geom_hbond.pdb2cif_id_in_model_A'         geom_hbond          no
+       '_geom_hbond.pdb2cif_id_in_model_D'         geom_hbond          no
+       '_geom_hbond.pdb2cif_id_in_model_H'         geom_hbond          no
+       '_geom_torsion.pdb2cif_id_in_model_1'       geom_torsion        no
+       '_geom_torsion.pdb2cif_id_in_model_2'       geom_torsion        no
+       '_geom_torsion.pdb2cif_id_in_model_3'       geom_torsion        no
+       '_geom_torsion.pdb2cif_id_in_model_4'       geom_torsion        no
+       '_struct_conn.pdb2cif_ptnr1_id_in_model'    struct_conn         no
+       '_struct_conn.pdb2cif_ptnr2_id_in_model'    struct_conn         no
+     loop_
+    _item_linked.child_name
+    _item_linked.parent_name
+       '_atom_site_anisotrop.pdb2cif_id_in_model'
+                                       '_atom_site.pdb2cif_id_in_model'
+       '_geom_angle.pdb2cif_id_in_model_1'
+                                       '_atom_site.pdb2cif_id_in_model'
+       '_geom_angle.pdb2cif_id_in_model_2'
+                                       '_atom_site.pdb2cif_id_in_model'
+       '_geom_angle.pdb2cif_id_in_model_3'
+                                       '_atom_site.pdb2cif_id_in_model'
+       '_geom_bond.pdb2cif_id_in_model_1'
+                                       '_atom_site.pdb2cif_id_in_model'
+       '_geom_bond.pdb2cif_id_in_model_2'
+                                       '_atom_site.pdb2cif_id_in_model'
+       '_geom_contact.pdb2cif_id_in_model_1'
+                                       '_atom_site.pdb2cif_id_in_model'
+       '_geom_contact.pdb2cif_id_in_model_2'
+                                       '_atom_site.pdb2cif_id_in_model'
+       '_geom_hbond.pdb2cif_id_in_model_A'
+                                       '_atom_site.pdb2cif_id_in_model'
+       '_geom_hbond.pdb2cif_id_in_model_D'
+                                       '_atom_site.pdb2cif_id_in_model'
+       '_geom_hbond.pdb2cif_id_in_model_H'
+                                       '_atom_site.pdb2cif_id_in_model'
+       '_geom_torsion.pdb2cif_id_in_model_1'
+                                       '_atom_site.pdb2cif_id_in_model'
+       '_geom_torsion.pdb2cif_id_in_model_2'
+                                       '_atom_site.pdb2cif_id_in_model'
+       '_geom_torsion.pdb2cif_id_in_model_3'
+                                       '_atom_site.pdb2cif_id_in_model'
+       '_geom_torsion.pdb2cif_id_in_model_4'
+                                       '_atom_site.pdb2cif_id_in_model'
+       '_struct_conn.pdb2cif_ptnr1_id_in_model'
+                                       '_atom_site.pdb2cif_id_in_model'
+       '_struct_conn.pdb2cif_ptnr2_id_in_model'
+                                       '_atom_site.pdb2cif_id_in_model'
+    _item_type.code               code
+     save_
+
+
+save__atom_site.pdb2cif_label_model_id
+    _item_description.description
+;              A component of the macromolecular identifier for this atom site.
+               The value of _atom_site.label_model_id associates the atom
+               site with a particular nmr model.
+               
+;
+     loop_
+    _item.name
+    _item.category_id
+    _item.mandatory_code
+       '_atom_site.pdb2cif_label_model_id'              atom_site           no
+       '_atom_site_anisotrop.pdb2cif_label_model_id'    atom_site_anisotrop no
+       '_geom_angle.pdb2cif_label_model_id'             geom_angle          no
+       '_geom_bond.pdb2cif_label_model_id'              geom_bond           no
+       '_geom_contact.pdb2cif_label_model_id'           geom_contact        no
+       '_geom_hbond.pdb2cif_label_model_id'             geom_hbond          no
+       '_geom_torsion.pdb2cif_label_model_id'           geom_torsion        no
+       '_struct_conn.pdb2cif_label_model_id'            struct_conn         no
+       '_struct_mon_prot.pdb2cif_label_model_id'        struct_mon_prot     no
+       '_struct_mon_prot_cis.pdb2cif_label_model_id'    struct_mon_prot     no
+    _item_type.code               code
+     loop_
+    _item_linked.child_name
+    _item_linked.parent_name
+       '_atom_site_anisotrop.pdb2cif_label_model_id'
+                                            '_atom_site.pdb2cif_label_model_id'
+       '_geom_angle.pdb2cif_label_model_id'
+                                            '_atom_site.pdb2cif_label_model_id'   
+       '_geom_bond.pdb2cif_label_model_id'
+                                            '_atom_site.pdb2cif_label_model_id'
+       '_geom_contact.pdb2cif_label_model_id'
+                                            '_atom_site.pdb2cif_label_model_id'
+       '_geom_hbond.pdb2cif_label_model_id'
+                                            '_atom_site.pdb2cif_label_model_id'
+       '_geom_torsion.pdb2cif_label_model_id'
+                                            '_atom_site.pdb2cif_label_model_id'
+       '_struct_conn.pdb2cif_label_model_id'
+                                            '_atom_site.pdb2cif_label_model_id'
+       '_struct_mon_prot.pdb2cif_label_model_id'
+                                            '_atom_site.pdb2cif_label_model_id'
+       '_struct_mon_prot_cis.pdb2cif_label_model_id'
+                                            '_atom_site.pdb2cif_label_model_id'
+
+    _item_aliases.alias_name    '_atom_site.label_model_id'
+    _item_aliases.dictionary     pdb2cif_cif_mm.dic
+    _item_aliases.version       '0.0.01'
+     save_
+
+
+save__atom_site_anisotrop.pdb2cif_id_in_model
+    _item_description.description
+;              This data item is a pointer to _atom_site.pdb2cif_id_in_model 
+               in the ATOM_SITE category.
+
+               This identifier differs from _atom_site_anisotrop.id
+               by being relative to the particular model.
+;
+    _item.name                  '_atom_site_anisotrop.pdb2cif_id_in_model'
+    _item.mandatory_code          no
+     save_
+
+save__atom_site_anisotrop.pdb2cif_label_model_id
+    _item_description.description
+;              This data item is a pointer to _atom_site.pdb2cif_label_model_id 
+               in the ATOM_SITE category.
+;
+    _item.name                  '_atom_site_anisotrop.pdb2cif_label_model_id'
+    _item.mandatory_code          no
+     save_
+
+################
+## GEOM_ANGLE ##
+################
+
+save__geom_angle.pdb2cif_auth_id_in_model_1
+    _item_description.description
+;              An optional identifier of the first of the three atom sites 
+               that define the angle specified by _geom_angle.value.
+               This identifier differs from _geom_angle.atom_site_auth_id_1
+               by being relative to the particular model.
+
+               This data item is a pointer to
+               _atom_site.pdb2cif_auth_id_in_model in the ATOM_SITE category.
+;
+    _item.name                '_geom_angle.pdb2cif_auth_id_in_model_1'
+    _item.mandatory_code        no
+     loop_
+    _item_dependent.dependent_name
+                              '_geom_angle.pdb2cif_auth_id_in_model_2'
+                              '_geom_angle.pdb2cif_auth_id_in_model_3'
+     save_
+
+save__geom_angle.pdb2cif_auth_id_in_model_2
+    _item_description.description
+;              An optional identifier of the second of the three atom sites 
+               that define the angle specified by _geom_angle.value.
+               This identifier differs from _geom_angle.atom_site_auth_id_2
+               by being relative to the particular model.
+
+               This data item is a pointer to
+               _atom_site.pdb2cif_auth_id_in_model in the ATOM_SITE category.
+;
+    _item.name                '_geom_angle.pdb2cif_auth_id_in_model_2'
+    _item.mandatory_code        no
+     loop_
+    _item_dependent.dependent_name
+                              '_geom_angle.pdb2cif_auth_id_in_model_1'
+                              '_geom_angle.pdb2cif_auth_id_in_model_3'
+     save_
+
+save__geom_angle.pdb2cif_auth_id_in_model_3
+    _item_description.description
+;              An optional identifier of the third of the three atom sites 
+               that define the angle specified by _geom_angle.value.
+               This identifier differs from _geom_angle.atom_site_auth_id_3
+               by being relative to the particular model.
+
+               This data item is a pointer to
+               _atom_site.pdb2cif_auth_id_in_model in the ATOM_SITE category.
+;
+    _item.name                '_geom_angle.pdb2cif_auth_id_in_model_3'
+    _item.mandatory_code        no
+     loop_
+    _item_dependent.dependent_name
+                              '_geom_angle.pdb2cif_auth_id_in_model_1'
+                              '_geom_angle.pdb2cif_auth_id_in_model_2'
+     save_
+
+
+save__geom_angle.pdb2cif_auth_model_id
+    _item_description.description
+;              An optional identifier of the model containing the three atom 
+               sites that define the angle specified by _geom_angle.value.
+
+               This data item is a pointer to _atom_site.pdb2cif_auth_model_id 
+               in the ATOM_SITE category.
+;
+    _item.name                  '_geom_angle.pdb2cif_auth_model_id'
+    _item.mandatory_code          no
+     save_
+
+
+save__geom_angle.pdb2cif_id_in_model_1
+    _item_description.description
+;              An optional identifier of the first of the three atom sites 
+               that define the angle specified by _geom_angle.value.
+               This identifier differs from _geom_angle.atom_site_id_1
+               by being relative to the particular model.
+
+               This data item is a pointer to _atom_site.pdb2cif_id_in_model 
+               in the ATOM_SITE category.
+;
+    _item.name                  '_geom_angle.pdb2cif_id_in_model_1'
+    _item.mandatory_code          no
+     loop_
+    _item_dependent.dependent_name
+                                '_geom_angle.pdb2cif_id_in_model_2'
+                                '_geom_angle.pdb2cif_id_in_model_3'
+     save_
+
+save__geom_angle.pdb2cif_id_in_model_2
+    _item_description.description
+;              An optional identifier of the second of the three atom sites 
+               that define the angle specified by _geom_angle.value.
+               This identifier differs from _geom_angle.atom_site_id_2
+               by being relative to the particular model.
+
+               This data item is a pointer to _atom_site.pdb2cif_id_in_model 
+               in the ATOM_SITE category.
+;
+    _item.name                  '_geom_angle.pdb2cif_id_in_model_2'
+    _item.mandatory_code          no
+     loop_
+    _item_dependent.dependent_name
+                                '_geom_angle.pdb2cif_id_in_model_1'
+                                '_geom_angle.pdb2cif_id_in_model_3'
+     save_
+
+save__geom_angle.pdb2cif_id_in_model_3
+    _item_description.description
+;              An optional identifier of the third of the three atom sites 
+               that define the angle specified by _geom_angle.value.
+               This identifier differs from _geom_angle.atom_site_id_3
+               by being relative to the particular model.
+
+               This data item is a pointer to _atom_site.pdb2cif_id_in_model 
+               in the ATOM_SITE category.
+;
+    _item.name                  '_geom_angle.pdb2cif_id_in_model_3'
+    _item.mandatory_code          no
+     loop_
+    _item_dependent.dependent_name
+                                '_geom_angle.pdb2cif_id_in_model_1'
+                                '_geom_angle.pdb2cif_id_in_model_2'
+     save_
+
+
+save__geom_angle.pdb2cif_label_model_id
+    _item_description.description
+;              An optional identifier of the model containing the three atom 
+               sites that define the angle specified by _geom_angle.value.
+
+               This data item is a pointer to _atom_site.pdb2cif_label_model_id 
+               in the ATOM_SITE category.
+;
+    _item.name                  '_geom_angle.pdb2cif_label_model_id'
+    _item.mandatory_code          no
+     save_
+
+
+###############
+## GEOM_BOND ##
+###############
+
+save__geom_bond.pdb2cif_auth_id_in_model_1
+    _item_description.description
+;              An optional identifier of the first of the two atom sites 
+               that define the bond specified by _geom_bond.dist.
+               This identifier differs from _geom_bond.atom_site_auth_id_1
+               by being relative to the particular model.
+
+               This data item is a pointer to
+               _atom_site.pdb2cif_auth_id_in_model in the ATOM_SITE category.
+;
+    _item.name                 '_geom_bond.pdb2cif_auth_id_in_model_1'
+    _item.mandatory_code         no
+    _item_dependent.dependent_name
+                               '_geom_bond.pdb2cif_auth_id_in_model_2'
+     save_
+
+save__geom_bond.pdb2cif_auth_id_in_model_2
+    _item_description.description
+;              An optional identifier of the second of the two atom sites 
+               that define the bond specified by _geom_bond.dist.
+               This identifier differs from _geom_bond.atom_site_auth_id_2
+               by being relative to the particular model.
+
+               This data item is a pointer to
+               _atom_site.pdb2cif_auth_id_in_model in the ATOM_SITE category.
+;
+    _item.name                 '_geom_bond.pdb2cif_auth_id_in_model_2'
+    _item.mandatory_code          no
+    _item_dependent.dependent_name
+                               '_geom_bond.pdb2cif_auth_id_in_model_1'
+     save_
+
+
+save__geom_bond.pdb2cif_auth_model_id
+    _item_description.description
+;              An optional identifier of the model containing the two atom 
+               sites that define the bond specified by _geom_bond.dist.
+
+               This data item is a pointer to
+               _atom_site.pdb2cif_auth_model_id in the ATOM_SITE category.
+;
+    _item.name                  '_geom_bond.pdb2cif_auth_model_id'
+    _item.mandatory_code          no
+     save_
+
+
+save__geom_bond.pdb2cif_id_in_model_1
+    _item_description.description
+;              An optional identifier of the first of the two atom sites 
+               that define the bond specified by _geom_bond.dist.
+               This identifier differs from _geom_bond.atom_site_id_1
+               by being relative to the particular model.
+
+               This data item is a pointer to _atom_site.pdb2cif_id_in_model 
+               in the ATOM_SITE category.
+;
+    _item.name                  '_geom_bond.pdb2cif_id_in_model_1'
+    _item.mandatory_code          no
+    _item_dependent.dependent_name
+                                '_geom_bond.pdb2cif_id_in_model_2'
+     save_
+
+save__geom_bond.pdb2cif_id_in_model_2
+    _item_description.description
+;              An optional identifier of the second of the two atom sites 
+               that define the bond specified by _geom_bond.dist.
+               This identifier differs from _geom_bond.atom_site_id_2
+               by being relative to the particular model.
+
+               This data item is a pointer to _atom_site.pdb2cif_id_in_model 
+               in the ATOM_SITE category.
+;
+    _item.name                  '_geom_bond.pdb2cif_id_in_model_2'
+    _item.mandatory_code          no
+    _item_dependent.dependent_name
+                                '_geom_bond.pdb2cif_id_in_model_1'
+     save_
+
+
+save__geom_bond.pdb2cif_label_model_id
+    _item_description.description
+;              An optional identifier of the model containing the two atom 
+               sites that define the bond specified by _geom_bond.dist.
+
+               This data item is a pointer to _atom_site.pdb2cif_label_model_id 
+               in the ATOM_SITE category.
+;
+    _item.name                  '_geom_bond.pdb2cif_label_model_id'
+    _item.mandatory_code          no
+     save_
+
+##################
+## GEOM_CONTACT ##
+##################
+
+save__geom_contact.pdb2cif_auth_id_in_model_1
+    _item_description.description
+;              An optional identifier of the first of the two atom sites 
+               that define the contact specified by _geom_contact.dist.
+               This identifier differs from _geom_contact.atom_site_auth_id_1
+               by being relative to the particular model.
+
+               This data item is a pointer to
+               _atom_site.pdb2cif_auth_id_in_model in the ATOM_SITE category.
+;
+    _item.name              '_geom_contact.pdb2cif_auth_id_in_model_1'
+    _item.mandatory_code      no
+    _item_dependent.dependent_name
+                            '_geom_contact.pdb2cif_auth_id_in_model_2'
+     save_
+
+save__geom_contact.pdb2cif_auth_id_in_model_2
+    _item_description.description
+;              An optional identifier of the second of the two atom sites 
+               that define the contact specified by _geom_contact.dist.
+               This identifier differs from _geom_contact.atom_site_auth_id_2
+               by being relative to the particular model.
+
+               This data item is a pointer to
+               _atom_site.pdb2cif_auth_id_in_model in the ATOM_SITE category.
+;
+    _item.name              '_geom_contact.pdb2cif_auth_id_in_model_2'
+    _item.mandatory_code      no
+    _item_dependent.dependent_name
+                            '_geom_contact.pdb2cif_auth_id_in_model_1'
+     save_
+
+
+save__geom_contact.pdb2cif_auth_model_id
+    _item_description.description
+;              An optional identifier of the model containing the two atom 
+               sites that define the contact specified by _geom_contact.dist.
+
+               This data item is a pointer to _atom_site.pdb2cif_auth_model_id 
+               in the ATOM_SITE category.
+;
+    _item.name                  '_geom_contact.pdb2cif_auth_model_id'
+    _item.mandatory_code          no
+     save_
+
+
+save__geom_contact.pdb2cif_id_in_model_1
+    _item_description.description
+;              An optional identifier of the first of the two atom sites 
+               that define the contact specified by _geom_contact.dist.
+               This identifier differs from _geom_contact.atom_site_id_1
+               by being relative to the particular model.
+
+               This data item is a pointer to _atom_site.pdb2cif_id_in_model 
+               in the ATOM_SITE category.
+;
+    _item.name                  '_geom_contact.pdb2cif_id_in_model_1'
+    _item.mandatory_code          no
+    _item_dependent.dependent_name
+                                '_geom_contact.pdb2cif_id_in_model_2'
+     save_
+
+save__geom_contact.pdb2cif_id_in_model_2
+    _item_description.description
+;              An optional identifier of the second of the two atom sites 
+               that define the contact specified by _geom_contact.dist.
+               This identifier differs from _geom_contact.atom_site_id_2
+               by being relative to the particular model.
+
+               This data item is a pointer to _atom_site.pdb2cif_id_in_model 
+               in the ATOM_SITE category.
+;
+    _item.name                  '_geom_contact.pdb2cif_id_in_model_2'
+    _item.mandatory_code          no
+    _item_dependent.dependent_name
+                                '_geom_contact.pdb2cif_id_in_model_1'
+     save_
+
+
+save__geom_contact.pdb2cif_label_model_id
+    _item_description.description
+;              An optional identifier of the model containing the two atom 
+               sites that define the contact specified by _geom_contact.dist.
+
+               This data item is a pointer to _atom_site.pdb2cif_label_model_id 
+               in the ATOM_SITE category.
+;
+    _item.name                  '_geom_contact.pdb2cif_label_model_id'
+    _item.mandatory_code          no
+     save_
+
+
+################
+## GEOM_HBOND ##
+################
+
+save__geom_hbond.pdb2cif_auth_id_in_model_A
+    _item_description.description
+;              An optional identifier of the acceptor of the three atom sites 
+               that define the hydrogen bond.
+               This identifier differs from _geom_hbond.atom_site_auth_id_A
+               by being relative to the particular model.
+
+               This data item is a pointer to
+               _atom_site.pdb2cif_auth_id_in_model in the ATOM_SITE category.
+;
+    _item.name                '_geom_hbond.pdb2cif_auth_id_in_model_A'
+    _item.mandatory_code        no
+     loop_
+    _item_dependent.dependent_name
+                              '_geom_hbond.pdb2cif_auth_id_in_model_D'
+                              '_geom_hbond.pdb2cif_auth_id_in_model_H'
+     save_
+
+save__geom_hbond.pdb2cif_auth_id_in_model_D
+    _item_description.description
+;              An optional identifier of the donor of the three atom sites 
+               that define the hydrogen bond.
+               This identifier differs from _geom_hbond.atom_site_auth_id_D
+               by being relative to the particular model.
+
+               This data item is a pointer to
+               _atom_site.pdb2cif_auth_id_in_model in the ATOM_SITE category.
+;
+    _item.name                '_geom_hbond.pdb2cif_auth_id_in_model_D'
+    _item.mandatory_code        no
+     loop_
+    _item_dependent.dependent_name
+                              '_geom_hbond.pdb2cif_auth_id_in_model_A'
+                              '_geom_hbond.pdb2cif_auth_id_in_model_H'
+     save_
+
+save__geom_hbond.pdb2cif_auth_id_in_model_H
+    _item_description.description
+;              An optional identifier of the hydrogen of the three atom sites 
+               that define the the hydrogen bond.
+               This identifier differs from _geom_hbond.atom_site_auth_id_H
+               by being relative to the particular model.
+
+               This data item is a pointer to
+               _atom_site.pdb2cif_auth_id_in_model in the ATOM_SITE category.
+;
+
+    _item.name                '_geom_hbond.pdb2cif_auth_id_in_model_H'
+    _item.mandatory_code         no
+     loop_
+    _item_dependent.dependent_name
+                              '_geom_hbond.pdb2cif_auth_id_in_model_A'
+                              '_geom_hbond.pdb2cif_auth_id_in_model_D'
+     save_
+
+
+save__geom_hbond.pdb2cif_auth_model_id
+    _item_description.description
+;              An optional identifier of the model containing the three atom 
+               sites that define the hydrogen bond.
+
+               This data item is a pointer to _atom_site.pdb2cif_auth_model_id 
+               in the ATOM_SITE category.
+;
+    _item.name                  '_geom_hbond.pdb2cif_auth_model_id'
+    _item.mandatory_code          no
+     save_
+
+
+save__geom_hbond.pdb2cif_id_in_model_A
+    _item_description.description
+;              An optional identifier of the acceptor of the three atom sites 
+               that define the hydrogen bond.
+               This identifier differs from _geom_hbond.atom_site_id_A
+               by being relative to the particular model.
+
+               This data item is a pointer to _atom_site.pdb2cif_id_in_model 
+               in the ATOM_SITE category.
+;
+    _item.name                  '_geom_hbond.pdb2cif_id_in_model_A'
+    _item.mandatory_code          no
+     loop_
+    _item_dependent.dependent_name
+                                '_geom_hbond.pdb2cif_id_in_model_D'
+                                '_geom_hbond.pdb2cif_id_in_model_H'
+     save_
+
+save__geom_hbond.pdb2cif_id_in_model_D
+    _item_description.description
+;              An optional identifier of the donor of the three atom sites 
+               that define the hydrogen bond.
+               This identifier differs from _geom_hbond.atom_site_id_D
+               by being relative to the particular model.
+
+               This data item is a pointer to _atom_site.pdb2cif_id_in_model 
+               in the ATOM_SITE category.
+;
+    _item.name                  '_geom_hbond.pdb2cif_id_in_model_D'
+    _item.mandatory_code          no
+     loop_
+    _item_dependent.dependent_name
+                                '_geom_hbond.pdb2cif_id_in_model_A'
+                                '_geom_hbond.pdb2cif_id_in_model_H'
+     save_
+
+save__geom_hbond.pdb2cif_id_in_model_H
+    _item_description.description
+;              An optional identifier of the hydrogen of the three atom sites 
+               that define the the hydrogen bond.
+               This identifier differs from _geom_hbond.atom_site_id_H
+               by being relative to the particular model.
+
+               This data item is a pointer to _atom_site.pdb2cif_id_in_model 
+               in the ATOM_SITE category.
+;
+    _item.name                  '_geom_hbond.pdb2cif_id_in_model_H'
+    _item.mandatory_code          no
+     loop_
+    _item_dependent.dependent_name
+                                '_geom_hbond.pdb2cif_id_in_model_A'
+                                '_geom_hbond.pdb2cif_id_in_model_D'
+     save_
+
+
+save__geom_hbond.pdb2cif_label_model_id
+    _item_description.description
+;              An optional identifier of the model containing the three atom 
+               sites that define the hydrogen bond.
+
+               This data item is a pointer to _atom_site.pdb2cif_label_model_id 
+               in the ATOM_SITE category.
+;
+    _item.name                  '_geom_hbond.pdb2cif_label_model_id'
+    _item.mandatory_code          no
+     save_
+
+##################
+## GEOM_TORSION ##
+##################
+
+save__geom_torsion.pdb2cif_auth_id_in_model_1
+    _item_description.description
+;              An optional identifier of the first of the three atom sites 
+               that define the torsion angle specified by _geom_torsion.value.
+               This identifier differs from _geom_torsion.atom_site_auth_id_1
+               by being relative to the particular model.
+
+               This data item is a pointer to
+               _atom_site.pdb2cif_auth_id_in_model in the ATOM_SITE category.
+;
+    _item.name              '_geom_torsion.pdb2cif_auth_id_in_model_1'
+    _item.mandatory_code     no
+     loop_
+    _item_dependent.dependent_name
+                            '_geom_torsion.pdb2cif_auth_id_in_model_2'
+                            '_geom_torsion.pdb2cif_auth_id_in_model_3'
+                            '_geom_torsion.pdb2cif_auth_id_in_model_4'
+     save_
+
+save__geom_torsion.pdb2cif_auth_id_in_model_2
+    _item_description.description
+;              An optional identifier of the second of the three atom sites 
+               that define the torsion angle specified by _geom_torsion.value.
+               This identifier differs from _geom_torsion.atom_site_auth_id_2
+               by being relative to the particular model.
+
+               This data item is a pointer to
+               _atom_site.pdb2cif_auth_id_in_model in the ATOM_SITE category.
+;
+    _item.name              '_geom_torsion.pdb2cif_auth_id_in_model_2'
+    _item.mandatory_code      no
+     loop_
+    _item_dependent.dependent_name
+                            '_geom_torsion.pdb2cif_auth_id_in_model_1'
+                            '_geom_torsion.pdb2cif_auth_id_in_model_3'
+                            '_geom_torsion.pdb2cif_auth_id_in_model_4'
+     save_
+
+save__geom_torsion.pdb2cif_auth_id_in_model_3
+    _item_description.description
+;              An optional identifier of the third of the four atom sites 
+               that define the torsion angle specified by _geom_torsion.value.
+               This identifier differs from _geom_torsion.atom_site_auth_id_3
+               by being relative to the particular model.
+
+               This data item is a pointer to
+               _atom_site.pdb2cif_auth_id_in_model in the ATOM_SITE category.
+;
+    _item.name              '_geom_torsion.pdb2cif_auth_id_in_model_3'
+    _item.mandatory_code      no
+     loop_
+    _item_dependent.dependent_name
+                            '_geom_torsion.pdb2cif_auth_id_in_model_1'
+                            '_geom_torsion.pdb2cif_auth_id_in_model_2'
+                            '_geom_torsion.pdb2cif_auth_id_in_model_4'
+     save_
+
+save__geom_torsion.pdb2cif_auth_id_in_model_4
+    _item_description.description
+;              An optional identifier of the fourth of the four atom sites 
+               that define the torsion angle specified by _geom_torsion.value.
+               This identifier differs from _geom_torsion.atom_site_auth_id_4
+               by being relative to the particular model.
+
+;
+    _item.name              '_geom_torsion.pdb2cif_auth_id_in_model_4'
+    _item.mandatory_code      no
+     loop_
+    _item_dependent.dependent_name
+                            '_geom_torsion.pdb2cif_auth_id_in_model_1'
+                            '_geom_torsion.pdb2cif_auth_id_in_model_2'
+                            '_geom_torsion.pdb2cif_auth_id_in_model_3'
+     save_
+
+
+save__geom_torsion.pdb2cif_auth_model_id
+    _item_description.description
+;              An optional identifier of the model containing the four atom 
+               sites that define the torsion specified by _geom_torsion.value.
+
+               This data item is a pointer to _atom_site.pdb2cif_auth_model_id 
+               in the ATOM_SITE category.
+;
+    _item.name                  '_geom_torsion.pdb2cif_auth_model_id'
+    _item.mandatory_code          no
+     save_
+
+save__geom_torsion.pdb2cif_id_in_model_1
+    _item_description.description
+;              An optional identifier of the first of the three atom sites 
+               that define the torsion angle specified by _geom_torsion.value.
+               This identifier differs from _geom_torsion.atom_site_id_1
+               by being relative to the particular model.
+
+               This data item is a pointer to _atom_site.pdb2cif_id_in_model 
+               in the ATOM_SITE category.
+;
+    _item.name                  '_geom_torsion.pdb2cif_id_in_model_1'
+    _item.mandatory_code          no
+     loop_
+    _item_dependent.dependent_name
+                                '_geom_torsion.pdb2cif_id_in_model_2'
+                                '_geom_torsion.pdb2cif_id_in_model_3'
+                                '_geom_torsion.pdb2cif_id_in_model_4'
+     save_
+
+save__geom_torsion.pdb2cif_id_in_model_2
+    _item_description.description
+;              An optional identifier of the second of the three atom sites 
+               that define the torsion angle specified by _geom_torsion.value.
+               This identifier differs from _geom_torsion.atom_site_id_2
+               by being relative to the particular model.
+
+               This data item is a pointer to _atom_site.pdb2cif_id_in_model 
+               in the ATOM_SITE category.
+;
+    _item.name                  '_geom_torsion.pdb2cif_id_in_model_2'
+    _item.mandatory_code          no
+     loop_
+    _item_dependent.dependent_name
+                                '_geom_torsion.pdb2cif_id_in_model_1'
+                                '_geom_torsion.pdb2cif_id_in_model_3'
+                                '_geom_torsion.pdb2cif_id_in_model_4'
+     save_
+
+save__geom_torsion.pdb2cif_id_in_model_3
+    _item_description.description
+;              An optional identifier of the third of the four atom sites 
+               that define the torsion angle specified by _geom_torsion.value.
+               This identifier differs from _geom_torsion.atom_site_id_3
+               by being relative to the particular model.
+
+               This data item is a pointer to _atom_site.pdb2cif_id_in_model 
+               in the ATOM_SITE category.
+;
+    _item.name                  '_geom_torsion.pdb2cif_id_in_model_3'
+    _item.mandatory_code          no
+     loop_
+    _item_dependent.dependent_name
+                                '_geom_torsion.pdb2cif_id_in_model_1'
+                                '_geom_torsion.pdb2cif_id_in_model_2'
+                                '_geom_torsion.pdb2cif_id_in_model_4'
+     save_
+
+save__geom_torsion.pdb2cif_id_in_model_4
+    _item_description.description
+;              An optional identifier of the fourth of the four atom sites 
+               that define the torsion angle specified by _geom_torsion.value.
+               This identifier differs from _geom_torsion.atom_site_id_4
+               by being relative to the particular model.
+
+               This data item is a pointer to _atom_site.pdb2cif_id_in_model 
+               in the ATOM_SITE category.
+;
+    _item.name                  '_geom_torsion.pdb2cif_id_in_model_4'
+    _item.mandatory_code          no
+     loop_
+    _item_dependent.dependent_name
+                                '_geom_torsion.pdb2cif_id_in_model_1'
+                                '_geom_torsion.pdb2cif_id_in_model_2'
+                                '_geom_torsion.pdb2cif_id_in_model_3'
+     save_
+
+
+save__geom_torsion.pdb2cif_label_model_id
+    _item_description.description
+;              An optional identifier of the model containing the four atom 
+               sites that define the torsion specified by _geom_torsion.value.
+
+               This data item is a pointer to _atom_site.pdb2cif_label_model_id 
+               in the ATOM_SITE category.
+;
+    _item.name                  '_geom_torsion.pdb2cif_label_model_id'
+    _item.mandatory_code          no
+     save_
+
+
+#################
+## STRUCT_CONN ##
+#################
+
+
+save__struct_conn.pdb2cif_ptnr1_atom_site_id
+    _item_description.description
+;              The id of an atom site for the first partner in a bond
+
+               This data item is a pointer to _atom_site.id in the
+               ATOM_SITE category.
+;
+    _item.name                  '_struct_conn.pdb2cif_ptnr1_atom_site_id'
+    _item.mandatory_code          no
+    _item.category_id             struct_conn
+    _item_linked.child_name     '_struct_conn.pdb2cif_ptnr1_atom_site_id'
+    _item_linked.parent_name    '_atom_site.id'
+
+    _item_aliases.alias_name    '_struct_conn.ptnr1_atom_site_id'
+    _item_aliases.dictionary     pdb2cif_cif_mm.dic
+    _item_aliases.version       '0.0.01'
+
+     save_
+
+save__struct_conn.pdb2cif_ptnr2_atom_site_id
+    _item_description.description
+;              The id of an atom site for the second partner in a bond
+
+               This data item is a pointer to _atom_site.id in the
+               ATOM_SITE category.
+;
+    _item.name                  '_struct_conn.pdb2cif_ptnr2_atom_site_id'
+    _item.mandatory_code          no
+    _item.category_id             struct_conn
+    _item_linked.child_name     '_struct_conn.pdb2cif_ptnr2_atom_site_id'
+    _item_linked.parent_name    '_atom_site.id'
+
+    _item_aliases.alias_name    '_struct_conn.ptnr2_atom_site_id'
+    _item_aliases.dictionary     pdb2cif_cif_mm.dic
+    _item_aliases.version       '0.0.01'
+
+     save_
+
+save__struct_conn.pdb2cif_auth_model_id
+    _item_description.description
+;              This data item is a pointer to _atom_site.auth_model_id 
+               in  the ATOM_SITE category.
+;
+    _item.name                  '_struct_conn.pdb2cif_auth_model_id'
+    _item.mandatory_code          no
+
+     save_
+
+save__struct_conn.pdb2cif_ptnr1_auth_id_in_model
+    _item_description.description
+;              An alternative id relative to an NMR model of an atom site
+               for the first partner in a bond relative to a model.
+
+               This data item is a pointer to
+               _atom_site.pdb2cif_auth_id_in_model in the ATOM_SITE category.
+;
+    _item.name           '_struct_conn.pdb2cif_ptnr1_auth_id_in_model'
+    _item.mandatory_code       no
+    _item.category_auth_id     struct_conn
+    _item_linked.child_name   
+                         '_struct_conn.pdb2cif_ptnr1_auth_id_in_model'
+    _item_linked.parent_name  '_atom_site.pdb2cif_auth_id_in_model'
+
+     save_
+
+save__struct_conn.pdb2cif_ptnr2_auth_id_in_model
+    _item_description.description
+;              An alternative id relative to an NMR model of an atom site 
+               for the second partner in a bond relative to a model.
+
+               This data item is a pointer to _atom_site.auth_id_in_model in the
+               ATOM_SITE category.
+;
+    _item.name                
+                         '_struct_conn.pdb2cif_ptnr2_auth_id_in_model'
+    _item.mandatory_code       no
+    _item.category_auth_id     struct_conn
+    _item_linked.child_name   
+                         '_struct_conn.pdb2cif_ptnr2_auth_id_in_model'
+    _item_linked.parent_name  '_atom_site.pdb2cif_auth_id_in_model'
+
+     save_
+
+save__struct_conn.pdb2cif_label_model_id
+    _item_description.description
+;              This data item is a pointer to _atom_site.label_model_id 
+               in  the ATOM_SITE category.
+;
+    _item.name                  '_struct_conn.pdb2cif_label_model_id'
+    _item.mandatory_code          no
+
+     save_
+
+save__struct_conn.pdb2cif_ptnr1_id_in_model
+    _item_description.description
+;              The id of an atom site for the first partner in a bond
+               relative to a model.
+
+               This data item is a pointer to _atom_site.pdb2cif_id_in_model
+               in the ATOM_SITE category.
+;
+    _item.name                '_struct_conn.pdb2cif_ptnr1_id_in_model'
+    _item.mandatory_code        no
+    _item.category_id           struct_conn
+    _item_linked.child_name   '_struct_conn.pdb2cif_ptnr1_id_in_model'
+    _item_linked.parent_name  '_atom_site.pdb2cif_id_in_model'
+
+     save_
+
+save__struct_conn.pdb2cif_ptnr2_id_in_model
+    _item_description.description
+;              The id of an atom site for the second partner in a bond
+               relative to a model.
+
+               This data item is a pointer to _atom_site.id in the
+               ATOM_SITE category.
+;
+    _item.name                '_struct_conn.pdb2cif_ptnr2_id_in_model'
+    _item.mandatory_code        no
+    _item.category_id           struct_conn
+    _item_linked.child_name   '_struct_conn.pdb2cif_ptnr2_id_in_model'
+    _item_linked.parent_name  '_atom_site.pdb2cif_id_in_model'
+
+     save_
+
+
+
+#####################
+## STRUCT_MON_PROT ##
+#####################
+
+save__struct_mon_prot.pdb2cif_auth_model_id
+    _item_description.description
+;              This data item is a pointer to _atom_site.auth_model_id 
+               in  the ATOM_SITE category.
+;
+    _item.name                  '_struct_mon_prot.pdb2cif_auth_model_id'
+    _item.mandatory_code          no
+    _item.category_id             struct_mon_prot
+
+     save_
+
+save__struct_mon_prot.pdb2cif_label_model_id
+    _item_description.description
+;              This data item is a pointer to _atom_site.label_model_id 
+               in  the ATOM_SITE category.
+;
+    _item.name                  '_struct_mon_prot.pdb2cif_label_model_id'
+    _item.mandatory_code          no
+    _item.category_id             struct_mon_prot
+
+    _item_aliases.alias_name    '_struct_mon_prot.label_model_id'
+    _item_aliases.dictionary     pdb2cif_cif_mm.dic
+    _item_aliases.version       '0.0.01'
+
+     save_
+
+#########################
+## STRUCT_MON_PROT_CIS ##
+#########################
+
+save__struct_mon_prot_cis.pdb2cif_auth_model_id
+    _item_description.description
+;              This data item is a pointer to _atom_site.auth_model_id 
+               in the ATOM_SITE category.
+;
+    _item.name              '_struct_mon_prot_cis.pdb2cif_auth_model_id'
+    _item.mandatory_code          no
+    _item.category_id             struct_mon_prot_cis
+
+     save_
+
+save__struct_mon_prot_cis.pdb2cif_label_model_id
+    _item_description.description
+;              This data item is a pointer to _atom_site.label_model_id 
+               in the ATOM_SITE category.
+;
+    _item.name              '_struct_mon_prot_cis.pdb2cif_label_model_id'
+    _item.mandatory_code          no
+    _item.category_id             struct_mon_prot_cis
+
+    _item_aliases.alias_name    '_struct_mon_prot_cis.label_model_id'
+    _item_aliases.dictionary     pdb2cif_cif_mm.dic
+    _item_aliases.version       '0.0.01'
+
+     save_
+
+################
+## STRUCT_REF ##
+################
+
+save__struct_ref_seq_dif.pdb2cif_db_seq_num
+    _item_description.description
+;              The sequence position in the referenced database entry
+               corresponding to this point difference position.
+
+               The use of . for _struct_ref_seq_dif.pdb2cif_db_seq_num 
+               when a value has been given for 
+               _struct_ref_seq_dif.pdb2cif_seq_num indicates that there 
+               has been an insertion at this position.
+
+               The use of . for _struct_ref_seq_dif.pdb2cif_seq_num when
+               a value is given for _struct_ref_seq_dif.pdb2cif_db_seq_num
+               indicates that there has been a deletion at this
+               position.
+;
+    _item.name                  '_struct_ref_seq_dif.pdb2cif_db_seq_num'
+    _item.mandatory_code          no
+    _item.category_id             struct_ref_seq_dif
+     loop_
+    _item_range.maximum
+    _item_range.minimum
+                                  .    1
+                                  1    1
+    _item_type.code               int
+
+
+    _item_aliases.alias_name    '_struct_ref_seq_dif.db_seq_num'
+    _item_aliases.dictionary     pdb2cif_cif_mm.dic
+    _item_aliases.version       '0.0.01'
+
+
+     save_
+
+########################
+## DICTIONARY_HISTORY ##
+########################
+
+     loop_
+    _dictionary_history.version
+    _dictionary_history.update
+    _dictionary_history.revision
+   '0.0.01'  '1997-12-14'
+;
+   Dictionary created with tokens in use in pdb2cif version 2.3.4
+;
+   '0.0.02'  '1997-12-14'
+;
+   Dictionary revised to use 'pdb2cif' prefix to conform to update policy
+;
+   '0.0.03'  '2000-04-14'
+;
+   Extended dictionary for _atom_site.id_in_model, _atom_site.auth_id_in_model
+   token and childrens, added children for _atom_site.label_model_id, added
+   _atom_site.auth_model_id and children.  Prefixed all tokens with pdb2cif
+;
+   '0.0.04'  '2000-04-17'
+;
+   Correct "label_model_auth" typo, remove duplicate line.
+;
+   '0.0.05'  '2000-05-30'
+;
+   Remove "atom_site_" prefixes where redundant.  Restore definitions
+   of _struct_conn.pdb2cif_ptnr1_atom_site_id and 
+   _struct_conn.pdb2cif_ptnr2_atom_site_id lost in trasition of 0.0.03
+;
+

@@ -1,0 +1,58 @@
+   File Name		Archive #	Description
+-----------------------------------------------------------
+ NOTICE                     1	Important Notices
+ IUCR_POLICY                1	IUCR Policy on CIF
+ 1ace.ent                   1	PDB entry 1ace
+ 1ace.pdbh                  1	pdb2cif header for 1ace
+ 1ace.tcif                  1	test output of 1ace
+ 1crn.ent                   1	PDB entry 1crn
+ 1crn.pdbh                  1	pdb2cif header for 1crn
+ 1crn.tcif                  1	test output of 1crn
+ 1cro.ent                   1	PDB entry 1cro
+ 1cro.pdbh                  1	pdb2cif header for 1cro
+ 1cro.tcif                  1	test output of 1cro
+ 1ctj.ent                   1	PDB entry 1ctj
+ 1ctj.pdbh                  1	pdb2cif header for 1ctj
+ 1ctj.tcif                  1	test output of 1ctj
+ 1cwp.ent                   1	PDB entry 1cwp
+ 1cwp.pdbh                  1	pdb2cif header for 1cwp
+ 1cwp.tcif                  1	test output of 1cwp
+ 1hyh.ent                   1	PDB entry 1hyh
+ 1hyh.pdbh                  1	pdb2cif header for 1hyh
+ 1hyh.tcif                  1	test output of 1hyh
+ 1ji0.ent                   1	PDB entry 1ji0
+ 1ji0.pdbh                  1	pdb2cif header for 1ji0
+ 1ji0.tcif                  1	test output of 1ji0
+ 2ace.ent                   1	PDB entry 2ace
+ 2ace.pdbh                  1	pdb2cif header for 2ace
+ 2ace.tcif                  1	test output of 2ace
+ 4hir.ent                   1	PDB entry 4hir
+ 4hir.pdbh                  1	pdb2cif header for 4hir
+ 4hir.tcif                  1	test output of 4hir
+ 4ins.ent                   1	PDB entry 4ins
+ 4ins.pdbh                  1	pdb2cif header for 4ins
+ 4ins.tcif                  1	test output of 4ins
+ 5hvp.ent                   1	PDB entry 5hvp
+ 5hvp.pdbh                  1	pdb2cif header for 5hvp
+ 5hvp.tcif                  1	test output of 5hvp
+ CHANGES                    1	version history of pdb2cif
+ CHANGES.html               1	html version of CHANGES
+ IUCR_POLICY.html           1	IUCR Policy on CIF, html version
+ MANIFEST                   1	a list of files in the kit
+ MANIFEST.html              1	a list of files in the kit, html version
+ MANIFEST.html.m4           1	m4 document to build MANIFEST.html
+ Makefile                   1	a control file for make
+ NOTICE.html                1	Important Notices, html version
+ README                     1	information on use of this kit
+ README.html                1	html version of README
+ README.html.m4             1	m4 document to build README.html
+ concord.html               1	partial PDB to mmCIF concordance in html
+ concord.txt                1	partial PDB to mmCIF concordance
+ default.pdbh               1	pdb2cif header for all entries
+ mkdecompln                 1	script to make decompressed file links
+ pdb2cif.awk                1	awk version of pdb2cif
+ pdb2cif.m4                 1	m4 document to build versions of pdb2cif
+ pdb2cif.oawk               1	version of pdb2cif for older awks
+ pdb2cif.pl                 1	perl version of pdb2cif
+ pdb2cif_cif_mm_0.0.05.dic  1	dictionary of tokens added for pdb2cif
+ rmdecompln                 1	script to remove decompressed file links

@@ -1,0 +1,429 @@
+                           Version History
+
+  2.4.2 6 Oct 2004 -- H. J. Bernstein
+
+   1. Fixed misaligned loops for SEQADV and MODRES translation.
+   Bug reported by dust@iwonka.med.virginia.edu.
+
+  2.4.1 21 Sep 2004 -- H. J. Bernstein
+
+   1. PDBX_POLY_SEQ_SCHEME tokens added to link sequence to atom
+   list.
+
+  2.3.9 17 Apr 2000 -- Helge Weissig (via HJB)
+
+   1. Fix y2K bug (add 100, not 1000 for years before 70.
+
+  2.3.8 30 May 2000 -- H. J. Bernstein
+
+   1. Increase number of footnotes from 9 to 999 to correct
+   problem reported by Jurgen F. Doreleijers.
+   2. Fix typos in comments.
+   3. Add new flag, use_pdb2cif_prefix defaulted to value of m4
+   macro USEPREFIX to control use of pdb2cif prefix.
+   4. Rework verbose tags to include new tags in
+   pdb2cif_cif_mm_0.0.05.dic.
+   5. Upgrade to _atom_site.pdb2cif_label_model_is and add
+   _atom_site.pdb2cif_id_in_model,
+   _atom_site.pdb2cif_auth_id_in_model to ATOM_SITE category.
+   Rework atom serial number logic to recognize entires with
+   repeated serial numbers and produce unique _atom_site.id
+   values. Allow for 999,999,999 atoms.
+   6. Rework warning messages to avoid going past column 80 with
+   long tags.
+
+  2.3.7 7 March 1999 -- H. J. Bernstein
+
+   1. Update email address for pdb2cif bug reports, and update
+   pdb2cif JAC reference.
+   2. Convert atom type and charge with non-standard information
+   to standard form.
+   3. Process special UNK SEQRES records
+   4. Start changing years to 4 digits in comments
+   5. Make sequence alignment more robust for cases reported by
+   Steve Brenner. Make 4 passes, avoid short sequence matches for
+   the first three and limiting segment to segment
+   discontinuities, especially for portions of chain which are
+   connected in the ATOM list.
+   6. Change all WARNING message to begin with the string "# ****
+   WARNING" and important summary diagnostics to begin with "#=#".
+   7. Fix "%%" to "%%%%" in ENTITY_POLY_SEQ summary message.
+
+  2.3.6 15 June 1998 -- H. J. Bernstein
+
+   1. Correct address and email information for FCB.
+   2. Update related comments.
+
+  2.3.5 3 May 1998 -- H. J. Bernstein
+
+   1. Correct handling of long references.
+   2. Correct handling of JRNL PUBL records.
+   3. Update comments for support and JAC reference.
+   4. Change quote mark on residue names.
+
+  2.3.4 12 Oct 1997 -- H. J. Bernstein
+
+   1. Correct handling of two blank fields in SEQADV.
+   2. Correct typos in STRUCT_MON_PROT tags.
+
+  2.3.3.2 7 Aug 1997 -- H. J. Bernstein
+
+   1. Correct spurious secondary struture headers when ssbond
+   records are present without any secondary structure.
+
+  2.3.3.1 5 June 1997 -- H. J. Bernstein
+
+   1. Minor revisions to the Web pages.
+   2. URLs in comments in the program updated.
+   3. Changes made in the m4 script for the gnu m4 handling of
+   format.
+
+  2.3.3 27 Jan 1997 -- H. J. Bernstein
+
+   2. Corrections to comments to update URLs.
+   1. Change _citation.journal_coden_ASTM to
+   _citation.journal_id_ASTM
+   2. Change _citation.journal_coden_ISSN to
+   _citation.journal_id_ISSN
+   3. Change _citation.journal_coden_CSD to
+   _citation.journal_id_CSD
+   4. Change _citation.book_coden_ISBN to _citation.book_id_ISBN
+   5. Change _diffrn_radiation.wavelength tokens to
+   _diffrn_radiation_wavelength tokens
+   6. Change _diffrn_radiation.detector tokens to _diffrn_detector
+   tokens
+   7. Change _diffrn_radiation.source tokens to _diffrn_source
+   tokens
+   8. Change _diffrn_refln.crystal_id to diffrn_refln.diffrn_id
+   9. Add new _reflns tokens
+   10. Change _atom_sites.frac_.. tokens to _atom_sites.fract_
+   tokens
+
+  2.3.2 22 Sep 1996 -- H. J. Bernstein
+
+   1. Include standard residues used in entry in CHEM_COMP to
+   satisfy dictionary parent/child relationships.
+   2. Add _symmetry.entry_id to provide required key for SYMMETRY
+   category.
+   3. Map all _exptl.method to lower case and map "x-ray
+   diffraction" to "single-crystal x-ray diffraction" to improve
+   dictinary compliance. Add warnings for values which are not in
+   dictionary enumeration of acceptable values.
+   4. Protect against missing PDB entry coden.
+   5. Change journal volume field to 4 characters.
+   6. Default publications with neither and ISSN nor an ISBN to be
+   treated as books, unless they have a volume or are "TO BE
+   PUBLISHED".
+   7. Add _reflns.entry_id to provide required key for REFLNS
+   catgeory. Ensure against duplication in verbose mode.
+   8. Change "TURN" to "TURN_P" for compliance.
+   9. Change _atom_site.auth_aym_id value from " " to a period for
+   compliance.
+   10. Give the entity id number instead of the three letter code
+   for _entity_name_com.entity_id.
+   11. Move _database_PDB_rev.date_original into loop.
+   12. Fix duplicated site information.
+   13. Move _publ_manuscript_incl.entry_id into loop.
+
+  2.3.1 24 Aug 1996 -- H. J. Bernstein
+
+   1. Test for volume = 1 and NMR entries.
+   2. Report unusual B-values or occupancies on NMR entries.
+   3. Handle empty field and miscount from split on some older
+   versions of perl when doing a slip on a blank line.
+   4. Handle versions of perl which don't support scalar
+   localtime.
+   5. Correct order of author names in one comment.
+
+  2.3.0 24 Jul 1996 -- H. J. Bernstein
+
+   1. Report CSD codens on references.
+   2. Fixed truncated publication names.
+   3. Correct type of DBREF sequence information.
+   4. Make ISSN, ISBN use consistent.
+   5. Allow for doubled up sequence database citations
+
+  2.2.7 12 Jun 1996 -- H. J. Bernstein
+
+   1. Correct format of ATOM_SITE data items when processing
+   February 1996 V 2.0 PDB format.
+   2. Change from ENTITY_NAME_SYS to ENTITY_NAME_COM for HETNAM,
+   HETSYN
+
+  2.2.6 12 May 1996 -- H. J. Bernstein
+
+   1. Add code for CISPEP, tokens _struct_mon_prot.label_model_id,
+   _struct_mon_prot_cis.label_model_id
+   2. Add code for HYDBND, SLTBRG, LINK
+   3. Add code for SIGUIJ, SIGATM
+   4. Add code for MODRES
+   5. Add code for END
+   6. Reorganize code to be more readable
+   7. Correct het_site_text to columns 31-70
+   8. Save memory for insertion codes by combining with seq number
+
+  2.2.5 5 May 1996 -- H. J. Bernstein
+
+   1. Fix error in perl/oawk handling of dotoupper, dotolower
+   macros.
+   2. Add flag for compliance_level to control processing for
+   February 1996 PDB format.
+   3. Add preliminary code for HETSYN and HETNAM, and pick up name
+   from HET.
+   4. Improve determination of atom type from atom name, matching
+   types against FORMUL (for HETS) or H, D, C, N, O, P, S for
+   standard residues, or the periodic table, if necessary.
+   5. Fix error in awk/oawk handling of record types such as
+   CONECT or HETATM which may merge with a following atom number.
+   6. Add _entry.id, _database_pdb_matrix.entry_id,
+   _atom_sites.entry_id, cell.entry_id to dataset.
+   7. Add warning that REMARKS are stripped to columns 12-70.
+   8. Align spacing for multiple model atom lists, and create
+   space for segment id's.
+   9. Add new tokens _struct_conn.ptnr1_atom_site_id and
+   _struct_conn.ptnr2_atom_site_id to list atom_site.id's with
+   structural connectivity.
+
+  2.2.4 25 Apr 1996 -- H. J. Bernstein
+
+   1. Add processing of MODEL to _atom_site.label_model_id
+   2. Correct error in naming of nHxx atoms
+   3. Move major comment heading to end of file and provide clear
+   disclaimer
+   4. Report more sequence homology mismatch of less than 90
+   percent for more cases
+   5. Suppress resolution line when no data
+   6. Report non-standard token use with PUBL_MANUSCRIPT_INCL if
+   MODEL or SEQADV are used.
+
+  2.2.3 18 Mar 1996 -- H. J. Bernstein
+
+   convert to _database_pdb_tvect...
+
+  2.2.2 18 Mar 1996 -- H. J. Bernstein
+
+   convert to _struct_ncs_oper.code
+
+  2.2.1 12 Mar 1996 -- H. J. Bernstein
+
+   1. add ...label_seq_num tokens to comply with mandatory status
+   2. change HELX_2_7 to HELX_27
+   3. correct handling of residue numbers in SITE
+   4. relocate CONNECT and SSBOND code to run after sequence
+   number processing
+
+  2.2.0 9 Mar 1996 -- H. J. Bernstein
+
+   Conversion or version 0.8.0 of cifdic.m96 of 6 Mar 1996
+   1. Use _struct_ncs_oper... for MTRIX
+   2. Change ...coden_PDB to ...coden_CSD
+   3. Change _atom_site.label_seq_num to _atom_site.auth_seq_num
+   4. Change _atom_site.entity_id to _atom_site.label_entity_id
+   5. Change all miscellaneous ...label_seq_num tokens to
+   ...auth_seq_num
+   6. Change entity_reference... to struct_ref...
+   7. Change entity_poly_seq_dif ... to struct_ref_seq_dif
+   8. Add code for TVECT as database_pdb_matrix.tvect...
+
+  2.1.3 1 Mar 1996 -- H. J. Bernstein
+
+   Changed chem_comp.mon_nstd_flag for non-polymeric HETs from
+   "no" to "."
+
+  2.1.2 22 Feb 1996 -- H. J. Bernstein
+
+   Fix item count for blank volume and/or country
+
+  2.1.1 22 Feb 1996 -- H. J. Bernstein
+
+   1. Fix erroneous use of semi-colon in jrnl_pub ...
+   2. Fix Space Group
+   3. Fix error in sheets causing a loop miscount when no hydrogen
+   bonds for registratioon are given. (Thanks to P. Keller for
+   spotting this).
+
+  2.1 1 Feb 1996 -- H. J. Bernstein
+
+   Changes for 31 Jan 1996 mmCIF dictionary and recent mailing
+   list clarifications
+   1. Keep Junior, Senior etc with last name
+   2. Comment out TERs
+   3. Update comments
+
+  1.1.3-beta 25 Jan 1996 -- H. J. Bernstein
+
+   1. Invert Author names
+   2. Allow embedded redefinitions of verbose, etc.
+
+  1.1.2-beta 21 Jan 1996 -- H. J. Bernstein
+
+   1. Fix erroneous report of no homology on very short chains.
+   2. Fix error in spelling and use of auth_convtext
+   3. Fix digit range on sequence signatures
+   4. Summarize all warnings in comments at end
+   5. Pad all lines to 80 characters
+   6. Code for DBREF and SEQADV
+   7. Fix code for OBSLTE and SPRSDE
+   8. Clean up a lot of spacing
+   9. Try to match PDB reference numbers, if possible
+   10. Removed indications of donor, acceptor, positive, negative
+   from connectivity, since PDB no longer identifies these roles
+
+  1.1.1-beta 8 Dec 1995 -- H. J. Bernstein
+
+   1. List all struct_asym.id's
+   2. Remove leading digits from atom names
+   3. Remove use of _chemical.name_common for COMPND and map
+   COMPND, TITLE, SOURCE and CAVEAT to _struct.title
+   4. Fix expdta format.
+   5. Move first author back into general author list
+
+  1.1.0-beta 2 Dec 1995 -- H. J. Bernstein and F. C. Bernstein
+
+   1. Assign blank chain-id to "*" or ".", with "*" used for ATOM
+   and TER and, if there is only one chain for HETATM
+   2. Correct ssbond comment handling
+   3. Provide control of AUTH/EDIT typesetting with auth_convtext
+
+  1.0.11-alpha 1 Dec 1995 -- H. J. Bernstein
+
+   1. Minor cleanup and flag untranslated lines
+   2. Cleanup remaining non-mmCIF names except for open MTRIX
+   questions.
+   3. Correct handling of KEYWDS/KEYWRD for split keywords
+
+  1.0.10-alpha 11 Nov 1995 - H. J. Bernstein
+
+   1. Converted from awk script to m4 document which is used to
+   produce awk variations and perl script
+   2. correct ..._res_id to _comp_id in bonds
+
+  1.0.9-alpha 2 Nov 1995 -- H. J. Bernstein
+
+   Adopt cell.Z_PDB instead of cell.formula_units_Z
+
+  1.0.8-alpha 30 Oct 1995 -- H. J. Bernstein
+
+   Fix volume calculation
+
+  1.0.7-alpha 29 Oct 1995 -- H. J. Bernstein
+
+   1. Add clear warnings about limitations
+   2. Fix _atom_site.entity_seq_num information for the case of
+   disordered residues presented non-interleaved, as in 5hvp
+   3. Start conversion to m4 for old awk versions
+   4. Add conditional code to put entity_seq_num info into all
+   atom sites where known, provided dense_list is not "yes"
+
+  1.0.6-alpha 26 Oct 1995 -- H. J. Bernstein
+
+   Sequence matching
+
+  1.0.5-alpha 10 Oct 1995 -- H. J. Bernstein
+
+   1. Rework of formul and SEQRES
+   2. Make "covale" " . " for bonds, since PDB does not
+   distinguish bond orders any more
+   3. Fix gawk'ism in SHEET
+
+  1.0.4-alpha 19 Oct 1995 -- H. J. Bernstein
+
+   1. Fix extraneous output from REVDAT
+   2. Add warning comments about gawk and date
+   3. Fix handling of saltbr and exptl.method
+
+  1.0.3-alpha 13 Oct 1995 -- H. J. Bernstein
+
+   1. Revise sheet handling to match current dictionary
+   2. Convert ORIGX to cifdic.m95 0.7.28 (6 Oct 1995) definition
+
+  1.0.2-alpha 6 Oct 1995 -- H. J. Bernstein
+
+   Many more changes of item.id's and added first pass at
+   typesetting codes, controlled by convtext="yes"
+
+  1.0.1-alpha 29 Sep 1995
+
+   fix Phil's email address. -- HJB
+
+  1.0-alpha 28 Sep 1995
+
+   base version of mmCIF cifdic.m95 version
+   in a state ready for testing. Makes some assumptions about
+   handling of ORIGX, MTRIX and TER which are not settled in
+   mmCIF, and may need to be changed. There are still several PDB
+   record types to be translated, and the ordering of the output
+   needs to be improved.
+   Herbert J. Bernstein, Bernstein+Sons
+   yaya@bernstein-plus-sons.com
+   1. Reorganized SCALE, MTRIX, ORIGX to common
+   format.
+   2. Added handling of KEYWRD, OBSLTE, SPRSDE
+   3. Reorganized atom site list and included TER
+   4. Reorganized FTNOTE output and moved down in output
+
+  0.9c-mm-alpha 23 Sep 1995
+
+   corrected handling of formulas and id's of HETs
+
+  0.9c-mm-pre-alpha 22 Sep 1995
+
+   Based on mmCIF dictionary v0.7.24 31 Aug 1995, cifdic.m95, 22
+   September 1995, HJB, B+S
+   1. Automatically converted all official aliases in version
+   0.9c, including most in comments to standard mmCIF names
+   2. Manually converted most of the rest
+   3. Revised handling of ANISOU to use the necessary atom_site
+   category items with
+   lines embedded in the loops if ANISOU cards are present.
+   4. Revised REVDAT handling to print at the end of processing,
+   using "_database_pdb_rev"
+   and "_database_pdb_rev_record" loops
+   5. Changed the atom types to the first 2 characters of the PDB
+   atom name
+   6. Squeezed out the blanks from the middle of PDB atom names to
+   remove the need for quote marks
+   7. Changed " " default chain indicators to "." instead of "A",
+   since "A" could cause mis-assignments
+
+Prior Versions by P. Bourne
+
+  0.9c Nov 1993 Based on mmCIF dictionary v0.5, 01-sep-1993
+
+   1. Added _data block designator based on filename
+   2. Quoted space group ie 'P21 21 21'
+   3. All references to _atom_id are now in quotes to avoid N A ie
+   atom names in HETS containing white space.
+   4. MTRIX fixed - field spec. wrong in Guide to Author wrong
+   number of items - fixed
+   5. H-M should be H_M in space group name - fixed.
+   6. Removed some of the keyword dependencies e.g. will now
+   process list of ATOM only records
+   7. Handling of book citations in JRNL and REMARK 1 fixed.
+
+  0.9b Sept 1993 Based on mmCIF dictionary v0.5, 01-sep-1993
+
+   1. Reworked the handling of _entities
+   2. Added the verbose option.. this is useful if you intend
+   using the converted file as a template for bigger and better
+   things
+   3. Corrected a number of loop_ problems
+   4. Added new data items to the following:
+   _diffrn_*
+   _struct_asym_*
+   _entity_reference_*
+   _entity_nonp_*
+   _entity_mon_*
+   5. Corrected _struct_conf_id
+
+  0.9a Sept 1993 Based on mmCIF dictionary v0.5, 01-sep-1993
+
+   1. Much faster by storing not only incremental atom info. but
+   also PDB atom numbering info for use by CONECT records
+   2. Added _atom_sites_alt_id _atom_sites_alt_details
+   3. Added _struct_conn_par1_label_alt_id and
+   _struct_conn_par2_label_alt_id
+   4. Added _struct_site_gen_label_alt_id
+   5. Added "_database_PDB_rev_replaces"
+
+  0.9 August 1993 Based on mmCIF dictionary v0.5, 11-aug-1993
