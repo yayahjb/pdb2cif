@@ -167,8 +167,8 @@ fcb&#64;bernstein-plus-sons&#46;com
 <H3>Where to Get pdb2cif</H3>
 <P>
 Current versions are available via http from: 
-<A HREF="http://www.bernstein-plus-sons.com/software/pdb2cif">
-http://www.bernstein-plus-sons.com/software/pdb2cif</A>,<BR>
+<A HREF="http://github.com/yayahjb/pdb2cif.git">,
+http://github.com/yayahjb/pdb2cif.git</A>,<BR>
 It is available as a compressed shar 
 <A HREF="pdb2cif.shar.Z">pdb2cif.shar.Z (3.0 megabytes)</A>, 
 a compressed C-shell shar
