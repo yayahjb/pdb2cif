@@ -50,7 +50,7 @@
   Where to Get pdb2cif
 
    Current versions are available via http from:
-   http://github.com/yayahjb/pdb2cif,
+   http://github.com/yayahjb/pdb2cif.git,
    It is available as a compressed shar pdb2cif.shar.Z (3.0
    megabytes), a compressed C-shell shar pdb2cif.cshar.Z (3.0
    megabytes) or as individual files, as given in the MANIFEST.
